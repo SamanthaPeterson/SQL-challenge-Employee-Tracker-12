@@ -24,6 +24,10 @@ const path = require("path");
 const dotenv = require("dotenv");
 
 const nodemon = require("nodemon");
+const mysql2 = require("mysql2");
+const console.table = require("console.table");
+const inquirer = require("inquirer");
+
 
 const apiRoutes = require("./routes/apiRoutes.js");
 const htmlRoutes = require("./routes/htmlRoutes.js");
