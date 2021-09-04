@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS cms;
+DROP DATABASE IF EXISTS employeetracker;
 
-CREATE database cms;
+CREATE database employeetracker;
 
-USE cms;
+USE employeetracker;
 
 CREATE TABLE department (
   id INTEGER NOT NULL auto_increment PRIMARY KEY,

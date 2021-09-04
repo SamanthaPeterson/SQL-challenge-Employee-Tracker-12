@@ -6,6 +6,7 @@
 //npm i mysql2
 //npm i inquirer
 //npm i console.table
+//const cTable = require('console.table');
 
 
 //https://www.npmjs.com/package/nodemon
@@ -25,7 +26,8 @@ const dotenv = require("dotenv");
 
 const nodemon = require("nodemon");
 const mysql2 = require("mysql2");
-const console.table = require("console.table");
+
+const cTable = require('console.table');
 const inquirer = require("inquirer");
 
 
