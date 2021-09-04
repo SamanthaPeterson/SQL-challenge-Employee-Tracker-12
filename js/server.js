@@ -1,3 +1,15 @@
+//npm i 
+//npm i nodemon
+//npm i express
+//npm i dotenv
+//npm i node
+
+//https://www.npmjs.com/package/nodemon
+//https://www.npmjs.com/package/dotenv
+//https://www.npmjs.com/package/express
+//https://www.npmjs.com/package/node
+
+
 // Dependencies
 const express = require("express");
 const fs = require("fs");
