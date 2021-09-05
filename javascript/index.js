@@ -7,7 +7,8 @@
 //npm i inquirer
 //npm i console.table
 //const cTable = require('console.table');
-
+//npm i node@lts
+//npm i node
 
 //https://www.npmjs.com/package/nodemon
 //https://www.npmjs.com/package/dotenv
