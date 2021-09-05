@@ -18,7 +18,7 @@
 //https://www.npmjs.com/package/console.table
 
 // Dependencies
-const mysql = require("mysql");
+const mysql = require('mysql2');
 const fs = require("fs");
 const path = require("path");
 const dotenv = require("dotenv");
