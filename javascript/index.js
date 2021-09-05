@@ -19,6 +19,7 @@
 
 
 // Dependencies
+const mysql = require("mysql");
 const inquirer = require("inquirer");
 let Database = require("./employee-tracker-db");
 let cTable = require("console.table");
