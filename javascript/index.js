@@ -1,13 +1,45 @@
+//npm i 
+//npm i nodemon
+//npm i express
+//npm i dotenv
+//npm i node
+//npm i mysql2
+//npm i inquirer
+//npm i console.table
+//const cTable = require('console.table');
+
+
+//https://www.npmjs.com/package/nodemon
+//https://www.npmjs.com/package/dotenv
+//https://www.npmjs.com/package/express
+//https://www.npmjs.com/package/node
+//https://www.npmjs.com/package/mysql2
+//https://www.npmjs.com/package/inquirer
+//https://www.npmjs.com/package/console.table
+
+
+// Dependencies
 const inquirer = require("inquirer");
-let Database = require("./async-db");
+let Database = require("./employee-tracker-db");
 let cTable = require("console.table");
+const fs = require("fs");
+const path = require("path");
+const dotenv = require("dotenv");
+
+const nodemon = require("nodemon");
+const mysql2 = require("mysql2");
+
+const cTable = require('console.table');
+const inquirer = require("inquirer");
+
+
 
 const db = new Database({
     host: "localhost",
     port: 3002,
     user: "root",
     password: " ",
-    database: "employeetracker"
+    database: "employee-tracker-db"
   });
   
 /*
