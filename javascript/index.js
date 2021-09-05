@@ -29,8 +29,11 @@ const dotenv = require("dotenv");
 const nodemon = require("nodemon");
 const mysql2 = require("mysql2");
 
-const cTable = require('console.table');
-const inquirer = require("inquirer");
+//const cTable = require('cTable');
+
+//const cTable = require('console.table');
+//const inquirer = require("inquirer");
+const { CallTracker } = require("assert/strict");
 
 
 

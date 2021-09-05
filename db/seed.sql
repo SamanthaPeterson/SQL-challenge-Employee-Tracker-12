@@ -16,15 +16,15 @@ INSERT into role (title, salary, department_id) VALUES ("Customer service", 3000
 INSERT into role (title, salary, department_id) VALUES ("HR", 50000, 3);
 
 INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Charles", "Xavier", 1, null);
-INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Erik Magneto", "Lehnsherr", 2, 1);
-INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Raven Mystique", "Darkholme", 2, 1);
+INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Erik Magneto", "Lehnsherr", 2, 1, null);
+INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Raven Mystique", "Darkholme", 2, 1, null);
 
 INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Logan James", "Howlett", 3, null);
 INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Jean", "Grey", 4, 3);
 INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Scott", "Summers", 4, 3);
 INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Peter", "Maximoff", 4, 3);
 
-INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Victor", "Creed", 5, null);
+INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Victor", "Creed", 5);
 INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Robert", "Drake", 6, 5);
 INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Ororo", "Munroe", 7, 5);
 INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Henry Hank", "McCoy", 7, 5);
