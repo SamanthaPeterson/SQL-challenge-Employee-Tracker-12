@@ -9,6 +9,7 @@
 //const cTable = require('console.table');
 //npm i node@lts
 //npm i node
+//npm i mysql
 
 //https://www.npmjs.com/package/nodemon
 //https://www.npmjs.com/package/dotenv
@@ -29,7 +30,7 @@ const path = require("path");
 const dotenv = require("dotenv");
 
 const nodemon = require("nodemon");
-const mysql2 = require("mysql2");
+//const mysql2 = require("mysql2");
 
 //const cTable = require('cTable');
 
@@ -37,7 +38,15 @@ const mysql2 = require("mysql2");
 //const inquirer = require("inquirer");
 const { CallTracker } = require("assert/strict");
 
+// get the client
+const mysql = require('mysql2');
 
+// create the connection to database
+// const connection = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     database: 'test'
+// });
 
 const db = new Database({
     host: "localhost",
