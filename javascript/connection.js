@@ -16,25 +16,25 @@ const sequelize = process.env.employee_tracker_db_URL
 module.exports = sequelize;
 
 
-////mysql
-//npm i 
-//npm i nodemon
-//npm i express
-//npm i dotenv
-//npm i node
-//npm i mysql2
-//npm i inquirer
-//npm i console.table
-//const cTable = require('console.table');
-//npm i node@lts
-//npm i node
-//npm i mysql
+//mysql
+// npm i 
+// npm i nodemon
+// npm i express
+// npm i dotenv
+// npm i node
+// npm i mysql2
+// npm i inquirer
+// npm i console.table
+// const cTable = require('console.table');
+// npm i node@lts
+// npm i node
+// npm i mysql
 
-//https://www.npmjs.com/package/nodemon
-//https://www.npmjs.com/package/dotenv
-//https://www.npmjs.com/package/express
-//https://www.npmjs.com/package/node
-//https://www.npmjs.com/package/mysql2
-//https://www.npmjs.com/package/inquirer
-//https://www.npmjs.com/package/console.table
-//https://dev.mysql.com/doc/refman/8.0/en/connecting-disconnecting.html
+// https://www.npmjs.com/package/nodemon
+// https://www.npmjs.com/package/dotenv
+// https://www.npmjs.com/package/express
+// https://www.npmjs.com/package/node
+// https://www.npmjs.com/package/mysql2
+// https://www.npmjs.com/package/inquirer
+// https://www.npmjs.com/package/console.table
+// https://dev.mysql.com/doc/refman/8.0/en/connecting-disconnecting.html
