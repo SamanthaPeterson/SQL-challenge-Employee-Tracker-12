@@ -17,6 +17,7 @@ class Database {
   constructor( config ) {
       this.connection = createConnection( config );
   }
+  // //creating a new promise & error handling
   query( sql, args ) {
       return new Promise( ( resolve, reject ) => {
           this.connection.query( sql, args, ( err, rows ) => {
