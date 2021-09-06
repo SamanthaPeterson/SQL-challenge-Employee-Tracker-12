@@ -1,21 +1,3 @@
-//npm i 
-//npm i nodemon
-//npm i express
-//npm i dotenv
-//npm i node
-//npm i mysql2
-//npm i inquirer
-//npm i console.table
-//const cTable = require('console.table');
-
-
-//https://www.npmjs.com/package/nodemon
-//https://www.npmjs.com/package/dotenv
-//https://www.npmjs.com/package/express
-//https://www.npmjs.com/package/node
-//https://www.npmjs.com/package/mysql2
-//https://www.npmjs.com/package/inquirer
-//https://www.npmjs.com/package/console.table
 
 // Dependencies
 const mysql = require('mysql2');
@@ -59,3 +41,23 @@ class Database {
 }
 
 module.exports = Database;
+
+
+//npm i 
+//npm i nodemon
+//npm i express
+//npm i dotenv
+//npm i node
+//npm i mysql2
+//npm i inquirer
+//npm i console.table
+//const cTable = require('console.table');
+
+
+//https://www.npmjs.com/package/nodemon
+//https://www.npmjs.com/package/dotenv
+//https://www.npmjs.com/package/express
+//https://www.npmjs.com/package/node
+//https://www.npmjs.com/package/mysql2
+//https://www.npmjs.com/package/inquirer
+//https://www.npmjs.com/package/console.table
