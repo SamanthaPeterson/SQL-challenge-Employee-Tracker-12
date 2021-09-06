@@ -1,21 +1,21 @@
 
 // Dependencies
-const mysql = require('mysql2');
-const fs = require("fs");
-const path = require("path");
-const dotenv = require("dotenv");
+import { createConnection } from 'mysql2';
+// import fs from "fs";
+// import path from "path";
+// import dotenv from "dotenv";
 
-const nodemon = require("nodemon");
-const mysql2 = require("mysql2");
+// import nodemon from "nodemon";
+// import mysql2 from "mysql2";
 
-const cTable = require('cTable');
-const inquirer = require("inquirer");
+// import cTable from 'cTable';
+// import inquirer from "inquirer";
 
 
 
 class Database {
   constructor( config ) {
-      this.connection = mysql.createConnection( config );
+      this.connection = createConnection( config );
   }
   query( sql, args ) {
       return new Promise( ( resolve, reject ) => {
@@ -40,7 +40,7 @@ class Database {
   }
 }
 
-module.exports = Database;
+export default Database;
 
 
 //npm i 

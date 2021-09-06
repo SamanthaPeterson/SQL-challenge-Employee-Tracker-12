@@ -1,24 +1,19 @@
-
 // Dependencies
 //const mysql = require("mysql");
 const inquirer = require("inquirer");
-let Database = require("./employee-tracker-db");
-let cTable = require("console.table");
-const fs = require("fs");
-const path = require("path");
+const Database = require("./employee-tracker-db").default;
+//const cTable = require("console.table");
+//const fs = require("fs");
+//const path = require("path");
 const dotenv = require("dotenv");
 
 const nodemon = require("nodemon");
-//const mysql2 = require("mysql2");
 
-//const cTable = require('cTable');
-
-//const cTable = require('console.table');
-//const inquirer = require("inquirer");
 const { CallTracker } = require("assert/strict");
 
 // get the client
-const mysql = require('mysql2');
+//const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 
 // create the connection to database
 // const connection = mysql.createConnection({
