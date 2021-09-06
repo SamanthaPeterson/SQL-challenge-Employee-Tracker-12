@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Ruth Lee",
+  "author": "Samantha Peterson",
   "license": "MIT",
   "dependencies": {
     "console.table": "^0.10.0",
