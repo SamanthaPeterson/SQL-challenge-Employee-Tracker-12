@@ -1,7 +1,7 @@
 // Dependencies
-//const mysql = require("mysql");
+
 const inquirer = require("inquirer");
-const Database = require("./employee-tracker-db").default;
+
 //const cTable = require("console.table");
 //const fs = require("fs");
 //const path = require("path");
@@ -15,14 +15,7 @@ const { CallTracker } = require("assert/strict");
 //const mysql = require('mysql2');
 const mysql = require('mysql2/promise');
 
-// create the connection to database
-// const connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     database: 'test'
-// });
-
-const db = new Database({
+const Database = require("./employee-tracker-db").default;({
     host: "localhost",
     port: 3002,
     user: "root",
