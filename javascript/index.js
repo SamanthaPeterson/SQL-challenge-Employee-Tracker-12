@@ -2,7 +2,7 @@
 
 const inquirer = require("inquirer");
 
-//const cTable = require("console.table");
+const cTable = require("console.table");
 //const fs = require("fs");
 //const path = require("path");
 const dotenv = require("dotenv");
@@ -13,9 +13,15 @@ const { CallTracker } = require("assert/strict");
 
 // get the client
 //const mysql = require('mysql2');
-const mysql = require('mysql2/promise');
+//const mysql = require('mysql2/promise');
 
-const Database = require("./employee-tracker-db").default;({
+// get the client
+const mysql = require('mysql2');
+
+// Create the connection pool. The pool-specific settings are the defaults
+const db = mysql.createConnection;
+({
+//const Database = require("./employee-tracker-db").default;({
     host: "localhost",
     port: 3002,
     user: "root",
@@ -23,8 +29,16 @@ const Database = require("./employee-tracker-db").default;({
     database: "employee-tracker-db"
   });
   
+db.connect((error) => {
+    if (error) {
+        console.log(error)
+    } else {
+        console.log ("MYSQL Connected...")
+    }
+})
+
 /*
-  Start of calls to the database 
+  Start calls to the database 
 */
 async function getManagerNames() {
     let query = "SELECT * FROM employee WHERE manager_id IS NULL";
