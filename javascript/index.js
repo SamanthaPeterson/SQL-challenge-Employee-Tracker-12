@@ -2,14 +2,11 @@
 
 const inquirer = require("inquirer");
 
-const cTable = require("console.table");
+
 //const fs = require("fs");
 //const path = require("path");
-const dotenv = require("dotenv");
+require("dotenv").config();
 
-const nodemon = require("nodemon");
-
-const { CallTracker } = require("assert/strict");
 
 // get the client
 //const mysql = require('mysql2');
@@ -19,23 +16,15 @@ const { CallTracker } = require("assert/strict");
 const mysql = require('mysql2');
 
 // Create the connection pool. The pool-specific settings are the defaults
-const db = mysql.createConnection;
-({
-//const Database = require("./employee-tracker-db").default;({
+const db = mysql.createConnection({
     host: "localhost",
-    port: 3002,
+    port: 3306,
     user: "root",
-    password: " ",
-    database: "employee-tracker-db"
+    password: "",
+    //   password: process.env.DB_PASSWORD,
+    database: "employee_tracker_db"
   });
   
-db.connect((error) => {
-    if (error) {
-        console.log(error)
-    } else {
-        console.log ("MYSQL Connected...")
-    }
-})
 
 /*
   Start calls to the database 
@@ -229,7 +218,9 @@ End of calls to the database
 */
 
 async function mainPrompt() {
-    return inquirer
+    return new Promise(function(resolve, reject) {
+
+    inquirer
         .prompt([
             {
                 type: "list",
@@ -249,7 +240,11 @@ async function mainPrompt() {
                 ]
             }
         ])
-}
+        .then(data => {
+            resolve(data.action)
+        })
+    })
+    }
 
 async function getAddEmployeeInfo() {
     const managers = await getManagerNames();
