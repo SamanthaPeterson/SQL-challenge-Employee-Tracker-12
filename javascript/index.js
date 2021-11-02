@@ -23,8 +23,8 @@ const db = mysql.createConnection({
     password: "",
     //   password: process.env.DB_PASSWORD,
     database: "employee_tracker_db"
-  });
-  
+});
+
 
 /*
   Start calls to the database 
@@ -35,7 +35,7 @@ async function getManagerNames() {
     const rows = await db.query(query);
     //console.log("number of rows returned " + rows.length);
     let employeeNames = [];
-    for(const employee of rows) {
+    for (const employee of rows) {
         employeeNames.push(employee.first_name + " " + employee.last_name);
     }
     return employeeNames;
@@ -47,7 +47,7 @@ async function getRoles() {
     //console.log("Number of rows returned: " + rows.length);
 
     let roles = [];
-    for(const row of rows) {
+    for (const row of rows) {
         roles.push(row.title);
     }
 
@@ -60,7 +60,7 @@ async function getDepartmentNames() {
     //console.log("Number of rows returned: " + rows.length);
 
     let departments = [];
-    for(const row of rows) {
+    for (const row of rows) {
         departments.push(row.name);
     }
 
@@ -89,7 +89,7 @@ async function getEmployeeId(fullName) {
     let employee = getFirstAndLastName(fullName);
 
     let query = 'SELECT id FROM employee WHERE employee.first_name=? AND employee.last_name=?';
-    let args=[employee[0], employee[1]];
+    let args = [employee[0], employee[1]];
     const rows = await db.query(query, args);
     return rows[0].id;
 }
@@ -99,7 +99,7 @@ async function getEmployeeNames() {
 
     const rows = await db.query(query);
     let employeeNames = [];
-    for(const employee of rows) {
+    for (const employee of rows) {
         employeeNames.push(employee.first_name + " " + employee.last_name);
     }
     return employeeNames;
@@ -142,20 +142,20 @@ async function viewAllEmployeesByDepartment() {
 
 // Will return an array with only two elements in it: 
 // [first_name, last_name]
-function getFirstAndLastName( fullName ) {
+function getFirstAndLastName(fullName) {
     // If a person has a space in their first name, such as "Mary Kay", 
     // then first_name needs to ignore that first space. 
     // Surnames generally do not have spaces in them so count the number
     // of elements in the array after the split and merge all before the last
     // element.
     let employee = fullName.split(" ");
-    if(employee.length == 2) {
+    if (employee.length == 2) {
         return employee;
     }
 
-    const last_name = employee[employee.length-1];
+    const last_name = employee[employee.length - 1];
     let first_name = " ";
-    for(let i=0; i<employee.length-1; i++) {
+    for (let i = 0; i < employee.length - 1; i++) {
         first_name = first_name + employee[i] + " ";
     }
     return [first_name.trim(), last_name];
@@ -169,7 +169,7 @@ async function updateEmployeeRole(employeeInfo) {
     const employee = getFirstAndLastName(employeeInfo.employeeName);
 
     let query = 'UPDATE employee SET role_id=? WHERE employee.first_name=? AND employee.last_name=?';
-    let args=[roleId, employee[0], employee[1]];
+    let args = [roleId, employee[0], employee[1]];
     const rows = await db.query(query, args);
     console.log(`Updated employee ${employee[0]} ${employee[1]} with role ${employeeInfo.role}`);
 }
@@ -218,33 +218,33 @@ End of calls to the database
 */
 
 async function mainPrompt() {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
 
-    inquirer
-        .prompt([
-            {
-                type: "list",
-                message: "What would you like to do?",
-                name: "action",
-                choices: [
-                  "Add department",
-                  "Add employee",
-                  "Add role",
-                  "Remove employee",
-                  "Update employee role",
-                  "View all departments",
-                  "View all employees",
-                  "View all employees by department",
-                  "View all roles",
-                  "Exit"
-                ]
-            }
-        ])
-        .then(data => {
-            resolve(data.action)
-        })
+        inquirer
+            .prompt([
+                {
+                    type: "list",
+                    message: "What would you like to do?",
+                    name: "action",
+                    choices: [
+                        "Add department",
+                        "Add employee",
+                        "Add role",
+                        "Remove employee",
+                        "Update employee role",
+                        "View all departments",
+                        "View all employees",
+                        "View all employees by department",
+                        "View all roles",
+                        "Exit"
+                    ]
+                }
+            ])
+            .then(data => {
+                resolve(data.action)
+            })
     })
-    }
+}
 
 async function getAddEmployeeInfo() {
     const managers = await getManagerNames();
@@ -285,54 +285,54 @@ async function getAddEmployeeInfo() {
 async function getRemoveEmployeeInfo() {
     const employees = await getEmployeeNames();
     return inquirer
-    .prompt([
-        {
-            type: "list",
-            message: "Which employee do you want to remove?",
-            name: "employeeName",
-            choices: [
-                // populate from db
-                ...employees
-            ]
-        }
-    ])
+        .prompt([
+            {
+                type: "list",
+                message: "Which employee do you want to remove?",
+                name: "employeeName",
+                choices: [
+                    // populate from db
+                    ...employees
+                ]
+            }
+        ])
 }
 
 async function getDepartmentInfo() {
     return inquirer
-    .prompt([
-        {
-            type: "input",
-            message: "What is the name of the new department?",
-            name: "departmentName"
-        }
-    ])
+        .prompt([
+            {
+                type: "input",
+                message: "What is the name of the new department?",
+                name: "departmentName"
+            }
+        ])
 }
 
 async function getRoleInfo() {
     const departments = await getDepartmentNames();
     return inquirer
-    .prompt([
-        {
-            type: "input",
-            message: "What is the title of the new role?",
-            name: "roleName"
-        },
-        {
-            type: "input",
-            message: "What is the salary of the new role?",
-            name: "salary"
-        },
-        {
-            type: "list",
-            message: "Which department uses this role?",
-            name: "departmentName",
-            choices: [
-                // populate from db
-                ...departments
-            ]
-        }
-    ])
+        .prompt([
+            {
+                type: "input",
+                message: "What is the title of the new role?",
+                name: "roleName"
+            },
+            {
+                type: "input",
+                message: "What is the salary of the new role?",
+                name: "salary"
+            },
+            {
+                type: "list",
+                message: "Which department uses this role?",
+                name: "departmentName",
+                choices: [
+                    // populate from db
+                    ...departments
+                ]
+            }
+        ])
 }
 
 async function getUpdateEmployeeRoleInfo() {
@@ -364,10 +364,10 @@ async function getUpdateEmployeeRoleInfo() {
 
 async function main() {
     let exitLoop = false;
-    while(!exitLoop) {
+    while (!exitLoop) {
         const prompt = await mainPrompt();
 
-        switch(prompt.action) {
+        switch (prompt.action) {
             case 'Add department': {
                 const newDepartmentName = await getDepartmentInfo();
                 await addDepartment(newDepartmentName);
@@ -394,7 +394,7 @@ async function main() {
                 await removeEmployee(employee);
                 break;
             }
-            
+
             case 'Update employee role': {
                 const employee = await getUpdateEmployeeRoleInfo();
                 await updateEmployeeRole(employee);
@@ -434,7 +434,7 @@ async function main() {
 }
 
 // Close your database connection when Node exits
-process.on("exit", async function(code) {
+process.on("exit", async function (code) {
     await db.close();
     return console.log(`About to exit with code ${code}`);
 });
