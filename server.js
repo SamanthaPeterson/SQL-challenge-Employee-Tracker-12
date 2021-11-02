@@ -1,9 +1,23 @@
 const express = require('express');
-const db = require('./db/connection');
-const apiRoutes = require('./routes/apiRoutes');
+
+
 const inquirer = require('inquirer');
+const mysql = require('mysql2');
 
 const PORT = process.env.PORT || 3001;
+
+// const connection = mysql.createConnection({
+// const db = mysql.createConnection({
+//     host: "localhost",
+//     port: 3306,
+//     user: "root",
+//     password: "",
+//     //   password: process.env.DB_PASSWORD,
+//     database: "employee_tracker_db"
+// });
+
+require("dotenv").config();
+
 const app = express();
 
 // Express middleware
@@ -34,7 +48,7 @@ app.use(express.json());
 
 //const fs = require("fs");
 //const path = require("path");
-require("dotenv").config();
+
 
 
 // get the client
@@ -42,17 +56,6 @@ require("dotenv").config();
 //const mysql = require('mysql2/promise');
 
 // get the client
-const mysql = require('mysql2');
-
-// Create the connection pool. The pool-specific settings are the defaults
-const db = mysql.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "",
-    //   password: process.env.DB_PASSWORD,
-    database: "employee_tracker_db"
-});
 
 
 /*
