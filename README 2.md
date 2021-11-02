@@ -1,24 +1,22 @@
-# Employee Tracker (Content Management System)
-
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
 
 
-  <h1 align="center">NoSQL MongoDB Social network API</h1>
+  <h1 align="center">Employee Tracker 12</h1>
 
   <p align="center">
-    NoSQL MongoDB Social network API - Created by Samantha Peterson
+Employee Tracker 12 - Created by Samantha Peterson
     <br />
-    <a href="https://github.com/SamanthaPeterson/NoSQL-18"><strong>Check it out »</strong></a>
+    <a href="https://github.com/SamanthaPeterson/"><strong>Check it out »</strong></a>
     <br />
     <br />
     
    
 ## Brief Summary 
 
-A social Network API b
+Employee Tracker 12
  
 
 ## Screenshot
@@ -27,8 +25,8 @@ A social Network API b
 
 
 
-Click this link to view the project https://github.com/SamanthaPeterson/NoSQL-18
- click here to watch the walk through video https://youtu.be/V4YOchf2pCY
+Click this link to view the project 
+ click here to watch the walk through video 
 
    
   </p>
@@ -69,14 +67,12 @@ Click this link to view the project https://github.com/SamanthaPeterson/NoSQL-18
 
 ### Built With
 
-* [MongoDB](https://getbootstrap.com/)
-* [Mongoose](https://www.w3schools.com/css/css_intro.asp)
+
 * [Javascript](https://expressjs.com/)
 * [Insomnia](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [Heroku](https://openweathermap.org/api)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [MongoDB Atlas](https://getbootstrap.com/)
-* [MongoDB Compass](https://getbootstrap.com/)
+
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -85,13 +81,12 @@ Click this link to view the project https://github.com/SamanthaPeterson/NoSQL-18
 ### Installation
 
 1. Click on the link below or enter it in your browser
-   ```sh
-    https://github.com/SamanthaPeterson/NoSQL-18
-    
-    https://youtu.be/V4YOchf2pCY
-   ```
+
 2. Enter city names in the search bar, and view the current and forecast weather information available
-Step 2dghadfhjadjsdbvserd
+
+
+
+
 
 
 
@@ -147,20 +142,17 @@ Email photographer.samantha@live.com
  
 
 
-Project Link: [https://github.com/SamanthaPeterson/Server_Side_API_Weather_Dashboard](https://github.com/SamanthaPeterson/Server_Side_API_Weather_Dashboard)
+Project Link: [https://github.com/SamanthaPeterson/](https://github.com/SamanthaPeterson/)
 
 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* [MongoDB](https://getbootstrap.com/)
 * [Javascript](https://sequelize.org/)
 
 Thank you to my TA and classmate for helping me to do some trouble shooting during office hours. 
 And thank you as well to my tutor for also helping me to better organize my files and troubleshoot. 
-
-
 
 
 manages a company employees using node, inquirer, and MySQL.
@@ -175,54 +167,7 @@ You need to set up your MySQL database before you can run the code.
   * Node
   * MySQL and MySQL Workbench (or the terminal instead of MySQL Workbench)
 
-### Installing
 
-    1. Go to 
-    2. 
-    3. 
-    4. 
-    5. 
-    6. Then
-
-## Tests
-
-FHSRTUERTYHLF
-
-### Manual tests
-
-    1. RDHSDRTU
-    2. SDYREU
-    3. RETUWRYI
-
-## Deployment
-
-To deploy
-
-## Contributing
-
-This project is not open to contributions.
-
-## Authors
-
-Samantha Peterson
-
-## License
-
-MIT
-
-## Retrenches
-
-fghfg
-dfgdfj
-dgjfk
-
-## Requirements
-
-* Node
-* MySQL
-* Git Terminal (<https://git-scm.com/downloads>)
-
-*
 
 //mysql
 npm i
