@@ -1,7 +1,7 @@
 const mysql = require("mysql");
 const util = require("util");
 
-const connection = mysql.createConnection({
+const db = mysql.createConnection({
     port: 3306,
     host: 'localhost',
     user: 'root',
@@ -9,8 +9,8 @@ const connection = mysql.createConnection({
     database: 'employees',
 });
 
-connection.connect();
+db.connect();
 
-connection.query = util.promisify(connection.query);
+db.query = util.promisify(db.query);
 
-module.exports = connection;
+module.exports = db;

@@ -7,14 +7,14 @@ const mysql = require('mysql2');
 const PORT = process.env.PORT || 3001;
 
 // const connection = mysql.createConnection({
-// const db = mysql.createConnection({
-//     host: "localhost",
-//     port: 3306,
-//     user: "root",
-//     password: "",
+const db = mysql.createConnection({
+     host: "localhost",
+     port: 3306,
+     user: "root",
+     password: "",
 //     //   password: process.env.DB_PASSWORD,
-//     database: "employee_tracker_db"
-// });
+     database: "employee_tracker_db"
+ });
 
 require("dotenv").config();
 
@@ -385,7 +385,7 @@ async function main() {
     while (!exitLoop) {
         const prompt = await mainPrompt();
 
-        switch (prompt.action) {
+        switch (prompt) {
             case 'Add department': {
                 const newDepartmentName = await getDepartmentInfo();
                 await addDepartment(newDepartmentName);
