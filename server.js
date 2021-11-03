@@ -1,8 +1,8 @@
 const express = require('express');
-
+//const mysql2= require('mysql2/promise');
 
 const inquirer = require('inquirer');
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 
 const PORT = process.env.PORT || 3001;
 
@@ -11,7 +11,7 @@ const db = mysql.createConnection({
      host: "localhost",
      port: 3306,
      user: "root",
-     password: "",
+     password: "DLP82418!s",
 //     //   password: process.env.DB_PASSWORD,
      database: "employee_tracker_db"
  });

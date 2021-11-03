@@ -5,8 +5,8 @@ const db = mysql.createConnection({
     port: 3306,
     host: 'localhost',
     user: 'root',
-    password: 'development',
-    database: 'employees',
+    password: 'DLP82418!s',
+    database: 'employee-tracker-db',
 });
 
 db.connect();
