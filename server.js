@@ -3,20 +3,10 @@ const express = require('express');
 
 const inquirer = require('inquirer');
 const mysql = require('mysql2/promise');
+require("dotenv").config();
+//const session = require('express-session');
 
 const PORT = process.env.PORT || 3001;
-
-// const connection = mysql.createConnection({
-const db = mysql.createConnection({
-     host: "localhost",
-     port: 3306,
-     user: "root",
-     password: "DLP82418!s",
-//     //   password: process.env.DB_PASSWORD,
-     database: "employee_tracker_db"
- });
-
-require("dotenv").config();
 
 const app = express();
 
