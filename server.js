@@ -1,53 +1,9 @@
-const express = require('express');
 //const mysql2= require('mysql2/promise');
 
 const inquirer = require('inquirer');
-const mysql = require('mysql2/promise');
+// const mysql = require('mysql2/promise');
 require("dotenv").config();
-//const session = require('express-session');
-
-const PORT = process.env.PORT || 3001;
-
-const app = express();
-
-// Express middleware
-app.use(express.urlencoded({
-    extended: false
-}));
-app.use(express.json());
-
-// // Use apiRoutes
-// app.use('/api', apiRoutes);
-
-// // Default response for any other request (Not Found)
-// app.use((req, res) => {
-//     res.status(404).end();
-// });
-
-// // Start server after DB connection
-// db.connect(err => {
-//     if (err) throw err;
-//     console.log('Database connected.');
-//     app.listen(PORT, () => {
-//         console.log(`Server running on port ${PORT}`);
-//     });
-// });
-// Dependencies
-
-
-
-//const fs = require("fs");
-//const path = require("path");
-
-
-
-// get the client
-//const mysql = require('mysql2');
-//const mysql = require('mysql2/promise');
-
-// get the client
-
-
+const db = require('./db/connection.js')
 /*
 Start calls to the database 
 */
