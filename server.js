@@ -171,7 +171,7 @@ async function addDepartment(departmentInfo) {
     const departmentName = departmentInfo.departmentName;
     let query = 'INSERT into department (name) VALUES (?)';
     let args = [departmentName];
-    const rows = await db.query(query, args);
+    const rows = db.query(query, args);
     console.log(`Added department named ${departmentName}`);
 }
 
