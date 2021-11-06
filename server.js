@@ -171,8 +171,14 @@ async function addDepartment(departmentInfo) {
     const departmentName = departmentInfo.departmentName;
     let query = 'INSERT into department (name) VALUES (?)';
     let args = [departmentName];
+    //const rows = db.query(query, args);
+//const rows = db.query(query, args);
+
+const rows = db.query(query, args);
+try {
     const rows = db.query(query, args);
-    console.log(`Added department named ${departmentName}`);
+} catch (e) {
+    console.log(e);
 }
 
 async function addRole(roleInfo) {
