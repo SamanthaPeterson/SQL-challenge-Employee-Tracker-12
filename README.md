@@ -4,10 +4,10 @@
 <p align="center">
 
 
-  <h1 align="center">Employee Tracker 12</h1>
+  <h1 align="center">12. SQL Challenge: Employee Tracker</h1>
 
   <p align="center">
-Employee Tracker 12 - Created by Samantha Peterson
+ - Created by Samantha Peterson
     <br />
     <a href="https://github.com/SamanthaPeterson/"><strong>Check it out »</strong></a>
     <br />
@@ -16,7 +16,7 @@ Employee Tracker 12 - Created by Samantha Peterson
    
 ## Brief Summary 
 
-Employee Tracker 12
+12. SQL Challenge: Employee Tracker
  
 
 ## Screenshot
