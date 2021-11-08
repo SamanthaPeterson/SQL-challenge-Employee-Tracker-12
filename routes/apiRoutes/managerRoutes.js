@@ -3,13 +3,13 @@ const router = express.Router();
 const db = require('../../db/connection');
 const inputCheck = require('../../utils/inputCheck');
 
-// Get all candidates and their party affiliation
+// Get all candidates and their departement affiliation
 router.get('/candidates', (req, res) => {
-  const sql = `SELECT candidates.*, parties.name 
+  const sql = `SELECT candidates.*, departements.name 
                 AS party_name 
                 FROM candidates 
-                LEFT JOIN parties 
-                ON candidates.party_id = parties.id`;
+                LEFT JOIN departements 
+                ON candidates.party_id = departements.id`;
 
   db.query(sql, (err, rows) => {
     if (err) {
@@ -23,13 +23,13 @@ router.get('/candidates', (req, res) => {
   });
 });
 
-// Get single candidate with party affiliation
+// Get single candidate with departement affiliation
 router.get('/candidate/:id', (req, res) => {
-  const sql = `SELECT candidates.*, parties.name 
+  const sql = `SELECT candidates.*, departements.name 
                AS party_name 
                FROM candidates 
-               LEFT JOIN parties 
-               ON candidates.party_id = parties.id 
+               LEFT JOIN departements 
+               ON candidates.party_id = departements.id 
                WHERE candidates.id = ?`;
   const params = [req.params.id];
 
@@ -78,7 +78,7 @@ router.post('/candidate', ({ body }, res) => {
   });
 });
 
-// Update a candidate's party
+// Update a candidate's departement
 router.put('/candidate/:id', (req, res) => {
   const errors = inputCheck(req.body, 'party_id');
   if (errors) {
