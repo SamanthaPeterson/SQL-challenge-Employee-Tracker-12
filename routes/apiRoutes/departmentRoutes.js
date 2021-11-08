@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const db = require('../../db/connection');
 
-// Get all departements
-router.get('/departements', (req, res) => {
-  const sql = `SELECT * FROM departements`;
+// Get all departments
+router.get('/departments', (req, res) => {
+  const sql = `SELECT * FROM departments`;
 
   db.query(sql, (err, rows) => {
     if (err) {
@@ -18,9 +18,9 @@ router.get('/departements', (req, res) => {
   });
 });
 
-// Get single departement
-router.get('/departement/:id', (req, res) => {
-  const sql = `SELECT * FROM departements WHERE id = ?`;
+// Get single department
+router.get('/department/:id', (req, res) => {
+  const sql = `SELECT * FROM departments WHERE id = ?`;
   const params = [req.params.id];
 
   db.query(sql, params, (err, row) => {
@@ -35,16 +35,16 @@ router.get('/departement/:id', (req, res) => {
   });
 });
 
-// Delete a departement
-router.delete('/departement/:id', (req, res) => {
-  const sql = `DELETE FROM departements WHERE id = ?`;
+// Delete a department
+router.delete('/department/:id', (req, res) => {
+  const sql = `DELETE FROM departments WHERE id = ?`;
 
   db.query(sql, req.params.id, (err, result) => {
     if (err) {
       res.status(400).json({ error: res.message });
     } else if (!result.affectedRows) {
       res.json({
-        message: 'departement not found'
+        message: 'department not found'
       });
     } else {
       res.json({

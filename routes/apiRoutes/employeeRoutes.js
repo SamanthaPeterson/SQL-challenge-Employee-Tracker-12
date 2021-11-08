@@ -5,11 +5,11 @@ const inputCheck = require('../../utils/inputCheck');
 
 // Get the total votes for all the managers
 router.get('/votes', (req, res) => {
-  const sql = `SELECT managers.*, departements.name AS department_name, 
+  const sql = `SELECT managers.*, departments.name AS department_name, 
                 COUNT(candidate_id) 
                 AS count FROM votes 
                 LEFT JOIN managers ON votes.candidate_id = managers.id 
-                LEFT JOIN departements ON managers.department_id = departements.id 
+                LEFT JOIN departments ON managers.department_id = departments.id 
                 GROUP BY candidate_id 
                 ORDER BY count DESC`;
 

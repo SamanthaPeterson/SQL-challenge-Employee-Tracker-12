@@ -3,13 +3,13 @@ const router = express.Router();
 const db = require('../../db/connection');
 const inputCheck = require('../../utils/inputCheck');
 
-// Get all managers and their departement affiliation
+// Get all managers and their department affiliation
 router.get('/managers', (req, res) => {
-  const sql = `SELECT managers.*, departements.name 
+  const sql = `SELECT managers.*, departments.name 
                 AS department_name 
                 FROM managers 
-                LEFT JOIN departements 
-                ON managers.department_id = departements.id`;
+                LEFT JOIN departments 
+                ON managers.department_id = departments.id`;
 
   db.query(sql, (err, rows) => {
     if (err) {
@@ -23,13 +23,13 @@ router.get('/managers', (req, res) => {
   });
 });
 
-// Get single manager with departement affiliation
+// Get single manager with department affiliation
 router.get('/manager/:id', (req, res) => {
-  const sql = `SELECT managers.*, departements.name 
+  const sql = `SELECT managers.*, departments.name 
                AS department_name 
                FROM managers 
-               LEFT JOIN departements 
-               ON managers.department_id = departements.id 
+               LEFT JOIN departments 
+               ON managers.department_id = departments.id 
                WHERE managers.id = ?`;
   const params = [req.params.id];
 
@@ -78,7 +78,7 @@ router.post('/manager', ({ body }, res) => {
   });
 });
 
-// Update a manager's departement
+// Update a manager's department
 router.put('/manager/:id', (req, res) => {
   const errors = inputCheck(req.body, 'department_id');
   if (errors) {

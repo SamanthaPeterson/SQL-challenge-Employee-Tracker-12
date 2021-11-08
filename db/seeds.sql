@@ -52,7 +52,7 @@ VALUES
   ('William', 'Carleton', 'wcarleton@literature.com'),
   ('Gerald', 'Griffin', 'ggriff@lit.net');
 
-INSERT INTO departements
+INSERT INTO departments
   (name, description)
 VALUES
   ('JS Juggernauts', 'The JS Juggernauts eat, breathe, and sleep JavaScript. They can build everything you could ever want in JS, including a new kitchen sink.'),

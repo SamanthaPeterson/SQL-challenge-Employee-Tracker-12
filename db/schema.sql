@@ -1,9 +1,9 @@
 DROP TABLE IF EXISTS employee;
 DROP TABLE IF EXISTS manager;
-DROP TABLE IF EXISTS departements;
+DROP TABLE IF EXISTS departments;
 DROP TABLE IF EXISTS employees;
 
-CREATE TABLE departements (
+CREATE TABLE departments (
   id INTEGER AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
   description TEXT
@@ -17,7 +17,7 @@ CREATE TABLE managers (
   industry_connected BOOLEAN NOT NULL,
   CONSTRAINT fk_department
     FOREIGN KEY (department_id)
-    REFERENCES departements(id)
+    REFERENCES departments(id)
     ON DELETE SET NULL
 );
 
@@ -43,10 +43,10 @@ CREATE TABLE votes (
 
 -- DROP TABLE IF EXISTS votes;
 -- DROP TABLE IF EXISTS managers;
--- DROP TABLE IF EXISTS departements;
+-- DROP TABLE IF EXISTS departments;
 -- DROP TABLE IF EXISTS voters;
 
--- CREATE TABLE departements (
+-- CREATE TABLE departments (
 --   id INTEGER AUTO_INCREMENT PRIMARY KEY,
 --   name VARCHAR(50) NOT NULL,
 --   description TEXT
@@ -60,7 +60,7 @@ CREATE TABLE votes (
 --   industry_connected BOOLEAN NOT NULL,
 --   CONSTRAINT fk_department
 --     FOREIGN KEY (department_id)
---     REFERENCES departements(id)
+--     REFERENCES departments(id)
 --     ON DELETE SET NULL
 -- );
 
