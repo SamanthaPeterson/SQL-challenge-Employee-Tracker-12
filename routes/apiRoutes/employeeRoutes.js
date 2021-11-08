@@ -3,14 +3,14 @@ const router = express.Router();
 const db = require('../../db/connection');
 const inputCheck = require('../../utils/inputCheck');
 
-// Get the total votes for all the managers
-router.get('/votes', (req, res) => {
+// Get the total roles for all the managers
+router.get('/roles', (req, res) => {
   const sql = `SELECT managers.*, departments.name AS department_name, 
-                COUNT(candidate_id) 
-                AS count FROM votes 
-                LEFT JOIN managers ON votes.candidate_id = managers.id 
+                COUNT(manager_id) 
+                AS count FROM roles 
+                LEFT JOIN managers ON roles.manager_id = managers.id 
                 LEFT JOIN departments ON managers.department_id = departments.id 
-                GROUP BY candidate_id 
+                GROUP BY manager_id 
                 ORDER BY count DESC`;
 
   db.query(sql, (err, rows) => {
@@ -25,17 +25,17 @@ router.get('/votes', (req, res) => {
   });
 });
 
-// Create a vote record
-router.post('/vote', ({ body }, res) => {
+// Create a role record
+router.post('/role', ({ body }, res) => {
   // Data validation
-  const errors = inputCheck(body, 'employee_id', 'candidate_id');
+  const errors = inputCheck(body, 'employee_id', 'manager_id');
   if (errors) {
     res.status(400).json({ error: errors });
     return;
   }
 
-  const sql = `INSERT INTO votes (employee_id, candidate_id) VALUES (?,?)`;
-  const params = [body.employee_id, body.candidate_id];
+  const sql = `INSERT INTO roles (employee_id, manager_id) VALUES (?,?)`;
+  const params = [body.employee_id, body.manager_id];
 
   db.query(sql, params, (err, result) => {
     if (err) {

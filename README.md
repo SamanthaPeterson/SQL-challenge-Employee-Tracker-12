@@ -116,7 +116,7 @@ SOFTWARE.
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Please feel free to contribute to the project. Email me with any questions or concerns 
+Please feel free to contribute to the project. employee_id me with any questions or concerns 
 
 
 <!-- CONTACT -->
@@ -136,7 +136,7 @@ Portfolio
 https://photographersama.myportfolio.com/
 
 
-Email photographer.samantha@live.com
+employee_id photographer.samantha@live.com
 
 
  

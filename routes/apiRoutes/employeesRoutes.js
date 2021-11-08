@@ -38,14 +38,14 @@ router.get('/employee/:id', (req, res) => {
 
 // Create a employee
 router.post('/employee', ({ body }, res) => {
-  const errors = inputCheck(body, 'first_name', 'last_name', 'email');
+  const errors = inputCheck(body, 'first_name', 'last_name', 'employee_id');
   if (errors) {
     res.status(400).json({ error: errors });
     return;
   }
 
-  const sql = `INSERT INTO employees (first_name, last_name, email) VALUES (?,?,?)`;
-  const params = [body.first_name, body.last_name, body.email];
+  const sql = `INSERT INTO employees (first_name, last_name, employee_id) VALUES (?,?,?)`;
+  const params = [body.first_name, body.last_name, body.employee_id];
 
   db.query(sql, params, (err, result) => {
     if (err) {
@@ -59,16 +59,16 @@ router.post('/employee', ({ body }, res) => {
   });
 });
 
-// Update a employee's email
+// Update a employee's employee_id
 router.put('/employee/:id', (req, res) => {
-  const errors = inputCheck(req.body, 'email');
+  const errors = inputCheck(req.body, 'employee_id');
   if (errors) {
     res.status(400).json({ error: errors });
     return;
   }
 
-  const sql = `UPDATE employees SET email = ? WHERE id = ?`;
-  const params = [req.body.email, req.params.id];
+  const sql = `UPDATE employees SET employee_id = ? WHERE id = ?`;
+  const params = [req.body.employee_id, req.params.id];
 
   db.query(sql, params, (err, result) => {
     if (err) {

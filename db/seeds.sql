@@ -1,5 +1,5 @@
 INSERT INTO employees
-  (first_name, last_name, email)
+  (first_name, last_name, employee_id)
 VALUES
   ('James', 'Fraser', 'jf@goldenbough.edu'),
   ('Jack', 'London', 'jlondon@ualaska.edu'),

@@ -1,5 +1,5 @@
 {
-  "name": "vote-api",
+  "name": "role-api",
   "version": "1.0.0",
   "description": "Back-end APIs for a voting app.",
   "main": "server.js",
