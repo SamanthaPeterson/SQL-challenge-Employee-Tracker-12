@@ -36,5 +36,5 @@ CREATE TABLE roles (
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT uc_employee UNIQUE (employee_id),
   CONSTRAINT fk_employee FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE,
-  CONSTRAINT fk_candidate FOREIGN KEY (manager_id) REFERENCES managers(id) ON DELETE CASCADE
+  CONSTRAINT fk_manager FOREIGN KEY (manager_id) REFERENCES managers(id) ON DELETE CASCADE
 );
