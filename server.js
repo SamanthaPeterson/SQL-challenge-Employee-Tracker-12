@@ -167,20 +167,20 @@ async function removeEmployee(employeeInfo) {
     console.log(`Employee removed: ${employeeName[0]} ${employeeName[1]}`);
 }
 
-async function addDepartment(departmentInfo) {
+function addDepartment(departmentInfo) {
     const departmentName = departmentInfo.departmentName;
     let query = 'INSERT into department (name) VALUES (?)';
     let args = [departmentName];
     //const rows = db.query(query, args);
 //const rows = db.query(query, args);
 
-const rows = db.query(query, args);
+//const rows = db.query(query, args);
 try {
-    const rows = db.query(query, args);
+    const rows =  db.query(query, args);
 } catch (e) {
     console.log(e);
 }
-
+}
 async function addRole(roleInfo) {
     // INSERT into role (title, salary, department_id) VALUES ("Sales Manager", 100000, 1);
     const departmentId = await getDepartmentId(roleInfo.departmentName);
@@ -188,7 +188,7 @@ async function addRole(roleInfo) {
     const title = roleInfo.roleName;
     let query = 'INSERT into role (title, salary, department_id) VALUES (?,?,?)';
     let args = [title, salary, departmentId];
-    const rows = await db.query(query, args);
+    const rows = db.query(query, args);
     console.log(`Added role ${title}`);
 }
 
