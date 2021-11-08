@@ -14,7 +14,7 @@ CREATE TABLE managers (
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
   department_id INTEGER,
-  industry_connected BOOLEAN NOT NULL,
+  salary BOOLEAN NOT NULL,
   CONSTRAINT fk_department
     FOREIGN KEY (department_id)
     REFERENCES departments(id)
@@ -57,7 +57,7 @@ CREATE TABLE votes (
 --   first_name VARCHAR(30) NOT NULL,
 --   last_name VARCHAR(30) NOT NULL,
 --   department_id INTEGER,
---   industry_connected BOOLEAN NOT NULL,
+--   salary BOOLEAN NOT NULL,
 --   CONSTRAINT fk_department
 --     FOREIGN KEY (department_id)
 --     REFERENCES departments(id)

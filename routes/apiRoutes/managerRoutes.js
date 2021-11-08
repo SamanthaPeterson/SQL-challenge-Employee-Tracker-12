@@ -51,18 +51,18 @@ router.post('/manager', ({ body }, res) => {
     body,
     'first_name',
     'last_name',
-    'industry_connected'
+    'salary'
   );
   if (errors) {
     res.status(400).json({ error: errors });
     return;
   }
 
-  const sql = `INSERT INTO managers (first_name, last_name, industry_connected, department_id) VALUES (?,?,?,?)`;
+  const sql = `INSERT INTO managers (first_name, last_name, salary, department_id) VALUES (?,?,?,?)`;
   const params = [
     body.first_name,
     body.last_name,
-    body.industry_connected,
+    body.salary,
     body.department_id
   ];
 

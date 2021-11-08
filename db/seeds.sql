@@ -60,7 +60,7 @@ VALUES
   ('Git Gurus', 'Need to resolve a merge conflict? The Git Gurus have your back. Nobody knows Git like these folks do.');
 
 INSERT INTO managers
-  (first_name, last_name, department_id, industry_connected)
+  (first_name, last_name, department_id, salary)
 VALUES
   ('Ronald', 'Firbank', 1, 1),
   ('Virginia', 'Woolf', 1, 1),
