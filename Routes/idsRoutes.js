@@ -60,14 +60,14 @@ router.post('/role', ({ body }, res) => {
 });
 
 // Update a role's email
-router.put('/role/:id', (req, res) => {
+router.put('/employee/:id', (req, res) => {
   const errors = inputCheck(req.body, 'email');
   if (errors) {
     res.status(400).json({ error: errors });
     return;
   }
 
-  const sql = `UPDATE roles SET email = ? WHERE id = ?`;
+  const sql = `UPDATE employee_id SET email = ? WHERE id = ?`;
   const params = [req.body.email, req.params.id];
 
   db.query(sql, params, (err, result) => {
@@ -75,7 +75,7 @@ router.put('/role/:id', (req, res) => {
       res.status(400).json({ error: err.message });
     } else if (!result.affectedRows) {
       res.json({
-        message: 'role not found'
+        message: 'employee_id not found'
       });
     } else {
       res.json({
@@ -89,14 +89,14 @@ router.put('/role/:id', (req, res) => {
 
 // Delete a role
 router.delete('/employee/:id', (req, res) => {
-  const sql = `DELETE FROM roles WHERE id = ?`;
+  const sql = `DELETE FROM employee id WHERE id = ?`;
 
   db.query(sql, req.params.id, (err, result) => {
     if (err) {
       res.status(400).json({ error: res.message });
     } else if (!result.affectedRows) {
       res.json({
-        message: 'role not found'
+        message: 'employee not found'
       });
     } else {
       res.json({
