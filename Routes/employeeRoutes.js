@@ -4,12 +4,12 @@ const db = require('../../db/connection');
 const inputCheck = require('../../utils/inputCheck');
 
 // Get all employee and their department affiliation
-router.get('/employee', (req, res) => {
-  const sql = `SELECT employee.*, departments.name 
+router.get('/employees', (req, res) => {
+  const sql = `SELECT employees.*, departments.name 
                 AS department_name 
                 FROM employee 
                 LEFT JOIN departments 
-                ON employee.department_id = departments.id`;
+                ON employees.department_id = departments.id `;
 
   db.query(sql, (err, rows) => {
     if (err) {
@@ -25,12 +25,12 @@ router.get('/employee', (req, res) => {
 
 // Get single employee with department affiliation
 router.get('/employee/:id', (req, res) => {
-  const sql = `SELECT employee.*, departments.name 
+  const sql = `SELECT employees.*, departments.name 
                AS department_name 
-               FROM employee 
+               FROM employees 
                LEFT JOIN departments 
-               ON employee.department_id = departments.id 
-               WHERE employee.id = ?`;
+               ON employees.department_id = departments.id 
+               WHERE employees.id = ?`;
   const params = [req.params.id];
 
   db.query(sql, params, (err, row) => {
@@ -51,18 +51,18 @@ router.post('/employee', ({ body }, res) => {
     body,
     'first_name',
     'last_name',
-    'industry_connected'
+    'role'
   );
   if (errors) {
     res.status(400).json({ error: errors });
     return;
   }
 
-  const sql = `INSERT INTO employee (first_name, last_name, industry_connected, department_id) VALUES (?,?,?,?)`;
+  const sql = `INSERT INTO employee (first_name, last_name, role, department_id) VALUES (?,?,?,?)`;
   const params = [
     body.first_name,
     body.last_name,
-    body.industry_connected,
+    body.role,
     body.department_id
   ];
 
@@ -86,7 +86,7 @@ router.put('/employee/:id', (req, res) => {
     return;
   }
 
-  const sql = `UPDATE employee SET department_id = ? 
+  const sql = `UPDATE employees SET department_id = ? 
                WHERE id = ?`;
   const params = [req.body.department_id, req.params.id];
 
@@ -109,7 +109,7 @@ router.put('/employee/:id', (req, res) => {
 
 // Delete a employee
 router.delete('/employee/:id', (req, res) => {
-  const sql = `DELETE FROM employee WHERE id = ?`;
+  const sql = `DELETE FROM employees WHERE id = ?`;
 
   db.query(sql, req.params.id, (err, result) => {
     if (err) {

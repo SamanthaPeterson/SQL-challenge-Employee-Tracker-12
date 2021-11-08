@@ -33,7 +33,7 @@ INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Kurt"
 INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Marie", "D'Ancanto", 9, null);
 
 
--- INSERT INTO voters
+-- INSERT INTO rolers
 --   (first_name, last_name, email)
 -- VALUES
 --   ('James', 'Fraser', 'jf@goldenbough.edu'),
@@ -95,7 +95,7 @@ INSERT into employee (first_name, last_name, role_id, manager_id) VALUES ("Marie
 --   ('Git Gurus', 'Need to resolve a merge conflict? The Git Gurus have your back. Nobody knows Git like these folks do.');
 
 -- INSERT INTO employee
---   (first_name, last_name, department_id, industry_connected)
+--   (first_name, last_name, department_id, role)
 -- VALUES
 --   ('Ronald', 'Firbank', 1, 1),
 --   ('Virginia', 'Woolf', 1, 1),
