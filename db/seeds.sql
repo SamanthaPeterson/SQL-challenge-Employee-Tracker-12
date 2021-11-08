@@ -1,4 +1,4 @@
-INSERT INTO voters
+INSERT INTO employees
   (first_name, last_name, email)
 VALUES
   ('James', 'Fraser', 'jf@goldenbough.edu'),

@@ -3,9 +3,9 @@ const router = express.Router();
 const db = require('../../db/connection');
 const inputCheck = require('../../utils/inputCheck');
 
-// Get all voters alphabetized by last name
-router.get('/voters', (req, res) => {
-  const sql = `SELECT * FROM voters ORDER BY last_name`;
+// Get all employees alphabetized by last name
+router.get('/employees', (req, res) => {
+  const sql = `SELECT * FROM employees ORDER BY last_name`;
 
   db.query(sql, (err, rows) => {
     if (err) {
@@ -19,9 +19,9 @@ router.get('/voters', (req, res) => {
   });
 });
 
-// Get single voter
-router.get('/voter/:id', (req, res) => {
-  const sql = `SELECT * FROM voters WHERE id = ?`;
+// Get single employee
+router.get('/employee/:id', (req, res) => {
+  const sql = `SELECT * FROM employees WHERE id = ?`;
   const params = [req.params.id];
 
   db.query(sql, params, (err, row) => {
@@ -36,15 +36,15 @@ router.get('/voter/:id', (req, res) => {
   });
 });
 
-// Create a voter
-router.post('/voter', ({ body }, res) => {
+// Create a employee
+router.post('/employee', ({ body }, res) => {
   const errors = inputCheck(body, 'first_name', 'last_name', 'email');
   if (errors) {
     res.status(400).json({ error: errors });
     return;
   }
 
-  const sql = `INSERT INTO voters (first_name, last_name, email) VALUES (?,?,?)`;
+  const sql = `INSERT INTO employees (first_name, last_name, email) VALUES (?,?,?)`;
   const params = [body.first_name, body.last_name, body.email];
 
   db.query(sql, params, (err, result) => {
@@ -59,15 +59,15 @@ router.post('/voter', ({ body }, res) => {
   });
 });
 
-// Update a voter's email
-router.put('/voter/:id', (req, res) => {
+// Update a employee's email
+router.put('/employee/:id', (req, res) => {
   const errors = inputCheck(req.body, 'email');
   if (errors) {
     res.status(400).json({ error: errors });
     return;
   }
 
-  const sql = `UPDATE voters SET email = ? WHERE id = ?`;
+  const sql = `UPDATE employees SET email = ? WHERE id = ?`;
   const params = [req.body.email, req.params.id];
 
   db.query(sql, params, (err, result) => {
@@ -75,7 +75,7 @@ router.put('/voter/:id', (req, res) => {
       res.status(400).json({ error: err.message });
     } else if (!result.affectedRows) {
       res.json({
-        message: 'Voter not found'
+        message: 'employee not found'
       });
     } else {
       res.json({
@@ -87,16 +87,16 @@ router.put('/voter/:id', (req, res) => {
   });
 });
 
-// Delete a voter
-router.delete('/voter/:id', (req, res) => {
-  const sql = `DELETE FROM voters WHERE id = ?`;
+// Delete a employee
+router.delete('/employee/:id', (req, res) => {
+  const sql = `DELETE FROM employees WHERE id = ?`;
 
   db.query(sql, req.params.id, (err, result) => {
     if (err) {
       res.status(400).json({ error: res.message });
     } else if (!result.affectedRows) {
       res.json({
-        message: 'Voter not found'
+        message: 'employee not found'
       });
     } else {
       res.json({
