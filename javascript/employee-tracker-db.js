@@ -14,31 +14,31 @@ import { createConnection } from 'mysql2';
 
 
 class Database {
-  constructor( config ) {
-      this.connection = createConnection( config );
-  }
-  // //creating a new promise & error handling
-  query( sql, args ) {
-      return new Promise( ( resolve, reject ) => {
-          this.connection.query( sql, args, ( err, rows ) => {
-              if ( err ) {
-                  console.log(err.sql);
-                  console.log("");
-                  return reject( err );
-              }
-              resolve( rows );
-          } );
-      } );
-  }
-  close() {
-      return new Promise( ( resolve, reject ) => {
-          this.connection.end( err => {
-              if ( err )
-                  return reject( err );
-              resolve();
-          } );
-      } );
-  }
+    constructor(config) {
+        this.connection = createConnection(config);
+    }
+    // //creating a new promise & error handling
+    query(sql, args) {
+        return new Promise((resolve, reject) => {
+            this.connection.query(sql, args, (err, rows) => {
+                if (err) {
+                    console.log(err.sql);
+                    console.log("");
+                    return reject(err);
+                }
+                resolve(rows);
+            });
+        });
+    }
+    close() {
+        return new Promise((resolve, reject) => {
+            this.connection.end(err => {
+                if (err)
+                    return reject(err);
+                resolve();
+            });
+        });
+    }
 }
 
 export default Database;
