@@ -3,13 +3,13 @@ const router = express.Router();
 const db = require('../../db/connection');
 const inputCheck = require('../../utils/inputCheck');
 
-// Get all candidates and their departement affiliation
-router.get('/candidates', (req, res) => {
-  const sql = `SELECT candidates.*, departements.name 
-                AS party_name 
-                FROM candidates 
+// Get all managers and their departement affiliation
+router.get('/managers', (req, res) => {
+  const sql = `SELECT managers.*, departements.name 
+                AS department_name 
+                FROM managers 
                 LEFT JOIN departements 
-                ON candidates.party_id = departements.id`;
+                ON managers.department_id = departements.id`;
 
   db.query(sql, (err, rows) => {
     if (err) {
@@ -23,14 +23,14 @@ router.get('/candidates', (req, res) => {
   });
 });
 
-// Get single candidate with departement affiliation
-router.get('/candidate/:id', (req, res) => {
-  const sql = `SELECT candidates.*, departements.name 
-               AS party_name 
-               FROM candidates 
+// Get single manager with departement affiliation
+router.get('/manager/:id', (req, res) => {
+  const sql = `SELECT managers.*, departements.name 
+               AS department_name 
+               FROM managers 
                LEFT JOIN departements 
-               ON candidates.party_id = departements.id 
-               WHERE candidates.id = ?`;
+               ON managers.department_id = departements.id 
+               WHERE managers.id = ?`;
   const params = [req.params.id];
 
   db.query(sql, params, (err, row) => {
@@ -45,8 +45,8 @@ router.get('/candidate/:id', (req, res) => {
   });
 });
 
-// Create a candidate
-router.post('/candidate', ({ body }, res) => {
+// Create a manager
+router.post('/manager', ({ body }, res) => {
   const errors = inputCheck(
     body,
     'first_name',
@@ -58,12 +58,12 @@ router.post('/candidate', ({ body }, res) => {
     return;
   }
 
-  const sql = `INSERT INTO candidates (first_name, last_name, industry_connected, party_id) VALUES (?,?,?,?)`;
+  const sql = `INSERT INTO managers (first_name, last_name, industry_connected, department_id) VALUES (?,?,?,?)`;
   const params = [
     body.first_name,
     body.last_name,
     body.industry_connected,
-    body.party_id
+    body.department_id
   ];
 
   db.query(sql, params, (err, result) => {
@@ -78,24 +78,24 @@ router.post('/candidate', ({ body }, res) => {
   });
 });
 
-// Update a candidate's departement
-router.put('/candidate/:id', (req, res) => {
-  const errors = inputCheck(req.body, 'party_id');
+// Update a manager's departement
+router.put('/manager/:id', (req, res) => {
+  const errors = inputCheck(req.body, 'department_id');
   if (errors) {
     res.status(400).json({ error: errors });
     return;
   }
 
-  const sql = `UPDATE candidates SET party_id = ? 
+  const sql = `UPDATE managers SET department_id = ? 
                WHERE id = ?`;
-  const params = [req.body.party_id, req.params.id];
+  const params = [req.body.department_id, req.params.id];
 
   db.query(sql, params, (err, result) => {
     if (err) {
       res.status(400).json({ error: err.message });
     } else if (!result.affectedRows) {
       res.json({
-        message: 'Candidate not found'
+        message: 'manager not found'
       });
     } else {
       res.json({
@@ -107,16 +107,16 @@ router.put('/candidate/:id', (req, res) => {
   });
 });
 
-// Delete a candidate
-router.delete('/candidate/:id', (req, res) => {
-  const sql = `DELETE FROM candidates WHERE id = ?`;
+// Delete a manager
+router.delete('/manager/:id', (req, res) => {
+  const sql = `DELETE FROM managers WHERE id = ?`;
 
   db.query(sql, req.params.id, (err, result) => {
     if (err) {
       res.status(400).json({ error: res.message });
     } else if (!result.affectedRows) {
       res.json({
-        message: 'Candidate not found'
+        message: 'manager not found'
       });
     } else {
       res.json({

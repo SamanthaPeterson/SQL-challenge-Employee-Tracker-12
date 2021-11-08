@@ -9,14 +9,14 @@ CREATE TABLE departements (
   description TEXT
 );
 
-CREATE TABLE candidates (
+CREATE TABLE managers (
   id INTEGER AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(30) NOT NULL,
   last_name VARCHAR(30) NOT NULL,
-  party_id INTEGER,
+  department_id INTEGER,
   industry_connected BOOLEAN NOT NULL,
-  CONSTRAINT fk_party
-    FOREIGN KEY (party_id)
+  CONSTRAINT fk_department
+    FOREIGN KEY (department_id)
     REFERENCES departements(id)
     ON DELETE SET NULL
 );
@@ -36,13 +36,13 @@ CREATE TABLE votes (
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT uc_voter UNIQUE (voter_id),
   CONSTRAINT fk_voter FOREIGN KEY (voter_id) REFERENCES voters(id) ON DELETE CASCADE,
-  CONSTRAINT fk_candidate FOREIGN KEY (candidate_id) REFERENCES candidates(id) ON DELETE CASCADE
+  CONSTRAINT fk_candidate FOREIGN KEY (candidate_id) REFERENCES managers(id) ON DELETE CASCADE
 );
 
 
 
 -- DROP TABLE IF EXISTS votes;
--- DROP TABLE IF EXISTS candidates;
+-- DROP TABLE IF EXISTS managers;
 -- DROP TABLE IF EXISTS departements;
 -- DROP TABLE IF EXISTS voters;
 
@@ -52,14 +52,14 @@ CREATE TABLE votes (
 --   description TEXT
 -- );
 
--- CREATE TABLE candidates (
+-- CREATE TABLE managers (
 --   id INTEGER AUTO_INCREMENT PRIMARY KEY,
 --   first_name VARCHAR(30) NOT NULL,
 --   last_name VARCHAR(30) NOT NULL,
---   party_id INTEGER,
+--   department_id INTEGER,
 --   industry_connected BOOLEAN NOT NULL,
---   CONSTRAINT fk_party
---     FOREIGN KEY (party_id)
+--   CONSTRAINT fk_department
+--     FOREIGN KEY (department_id)
 --     REFERENCES departements(id)
 --     ON DELETE SET NULL
 -- );
@@ -79,5 +79,5 @@ CREATE TABLE votes (
 --   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 --   CONSTRAINT uc_voter UNIQUE (voter_id),
 --   CONSTRAINT fk_voter FOREIGN KEY (voter_id) REFERENCES voters(id) ON DELETE CASCADE,
---   CONSTRAINT fk_candidate FOREIGN KEY (candidate_id) REFERENCES candidates(id) ON DELETE CASCADE
+--   CONSTRAINT fk_candidate FOREIGN KEY (candidate_id) REFERENCES managers(id) ON DELETE CASCADE
 -- );

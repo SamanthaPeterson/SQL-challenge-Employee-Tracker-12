@@ -3,13 +3,13 @@ const router = express.Router();
 const db = require('../../db/connection');
 const inputCheck = require('../../utils/inputCheck');
 
-// Get the total votes for all the candidates
+// Get the total votes for all the managers
 router.get('/votes', (req, res) => {
-  const sql = `SELECT candidates.*, departements.name AS party_name, 
+  const sql = `SELECT managers.*, departements.name AS department_name, 
                 COUNT(candidate_id) 
                 AS count FROM votes 
-                LEFT JOIN candidates ON votes.candidate_id = candidates.id 
-                LEFT JOIN departements ON candidates.party_id = departements.id 
+                LEFT JOIN managers ON votes.candidate_id = managers.id 
+                LEFT JOIN departements ON managers.department_id = departements.id 
                 GROUP BY candidate_id 
                 ORDER BY count DESC`;
 
