@@ -1,15 +1,14 @@
-CREATE DATABASE db_employee_tracker;
-CREATE DATABASE db_employee_tracker;
+DROP TABLE IF EXISTS employee;
+DROP TABLE IF EXISTS manager;
+DROP TABLE IF EXISTS departments;
+DROP TABLE IF EXISTS employees;
 
-USE employee_trackerDB;
-
-CREATE TABLE department (
+CREATE TABLE departments (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(30)
- 
 );
 
-CREATE TABLE role (
+CREATE TABLE manager (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(30),
   salary DECIMAL,
@@ -25,6 +24,4 @@ CREATE TABLE employee (
   role_id INT,
   FOREIGN KEY (role_id) REFERENCES role(id),
   FOREIGN KEY (manager_id) REFERENCES employee(id)
-
 );
-});
