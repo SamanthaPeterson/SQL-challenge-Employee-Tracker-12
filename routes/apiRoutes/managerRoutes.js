@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../../db/connection');
+const db = require('../../db/connection').default;
 const inputCheck = require('../../utils/inputCheck');
 
 // Get all managers and their department affiliation

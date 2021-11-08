@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../../db/connection');
+const db = require('../../db/connection').default;
 const inputCheck = require('../../utils/inputCheck');
 
 // Get the total roles for all the managers

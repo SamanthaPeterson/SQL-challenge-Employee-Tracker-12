@@ -1,6 +1,6 @@
-const mysql = require('mysql2');
+import { createConnection } from 'mysql2';
 
-const db = mysql.createConnection({
+const db = createConnection({
   host: 'localhost',
   // Your MySQL username,
   user: 'root',
@@ -9,4 +9,4 @@ const db = mysql.createConnection({
   database: 'db_employee_tracker'
 });
 
-module.exports = db;
+export default db;
