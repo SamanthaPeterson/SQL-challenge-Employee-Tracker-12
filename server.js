@@ -1,15 +1,18 @@
 //const express = require('express');
-const connection = require('./config/connection');
-const mysql = require('mysql');
+const connection = require('./db/connection');
+const mysql = require('mysql2');
 const inquirer = require('inquirer');
 const cTable = require('console.table');
 
-const validate = require('./javascript/validate');
+//const validate = require('./javascript/validate');
 
-use(require('./manager'));
-use(require('./departmentRoutes'));
-use(require('./employeeRoutes'));
-use(require('./employeeRoutes'));
+const {
+  deleteDepartment,
+  employeeDepartment,
+  addDepartment,
+  showDepartments
+} = require('./Modles/models/department')
+
 
 connection.connect((error) => {
   if (error) throw error;                                                     
@@ -46,52 +49,52 @@ const promptUser = () => {
         choices
       } = answers;
 
-      if (choices === 'View All Employees') {
-        viewAllEmployees();
-      }
+      // if (choices === 'View All Employees') {
+      //   viewAllEmployees();
+      // }
 
       if (choices === 'View All Departments') {
-        viewAllDepartments();
+        showDepartments();
       }
 
-      if (choices === 'View All Employees By Department') {
-        viewEmployeesByDepartment();
-      }
+      // if (choices === 'View All Employees By Department') {
+      //   viewEmployeesByDepartment();
+      // }
 
-      if (choices === 'Add Employee') {
-        addEmployee();
-      }
+      // if (choices === 'Add Employee') {
+      //   addEmployee();
+      // }
 
-      if (choices === 'Remove Employee') {
-        removeEmployee();
-      }
+      // if (choices === 'Remove Employee') {
+      //   removeEmployee();
+      // }
 
-      if (choices === 'Update Employee Role') {
-        updateEmployeeRole();
-      }
+      // if (choices === 'Update Employee Role') {
+      //   updateEmployeeRole();
+      // }
 
-      if (choices === 'Update Employee Manager') {
-        updateEmployeeManager();
-      }
+      // if (choices === 'Update Employee Manager') {
+      //   updateEmployeeManager();
+      // }
 
-      if (choices === 'View All Roles') {
-        viewAllRoles();
-      }
+      // if (choices === 'View All Roles') {
+      //   viewAllRoles();
+      // }
 
-      if (choices === 'Add Role') {
-        addRole();
-      }
+      // if (choices === 'Add Role') {
+      //   addRole();
+      // }
 
-      if (choices === 'Remove Role') {
-        removeRole();
-      }
+      // if (choices === 'Remove Role') {
+      //   removeRole();
+      // }
 
       if (choices === 'Add Department') {
         addDepartment();
       }
 
       if (choices === 'Remove Department') {
-        removeDepartment();
+       deleteDepartment();
       }
 
       if (choices === 'Exit') {
@@ -99,3 +102,4 @@ const promptUser = () => {
       }
     });
 };
+module.exports = {promptUser}
