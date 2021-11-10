@@ -1,27 +1,105 @@
-const express = require('express');
-const db = require('./db/connection').default;
-const apiRoutes = require('./routes/apiRoutes');
+//const express = require('express');
+const connection = require('./db/connection');
+const mysql = require('mysql2');
+const inquirer = require('inquirer');
+const cTable = require('console.table');
 
-const PORT = process.env.PORT || 3001;
-const app = express();
+//const validate = require('./javascript/validate');
 
-// Express middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+const {
+  deleteDepartment,
+  employeeDepartment,
+  addDepartment,
+  showDepartments
+} = require('./Modles/models/department')
 
-// Use apiRoutes
-app.use('/api', apiRoutes);
 
-// Default response for any other request (Not Found)
-app.use((req, res) => {
-  res.status(404).end();
+connection.connect((error) => {
+  if (error) throw error;                                                     
+  console.log(``);
+  
+  promptUser();
 });
 
-// Start server after DB connection
-db.connect(err => {
-  if (err) throw err;
-  console.log('Database connected.');
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-});
+// Prompt User for Choices
+const promptUser = () => {
+  inquirer.prompt([{
+      name: 'choices',
+      type: 'list',
+      message: 'Please select an option:',
+      choices: [
+        'View All Employees',
+        'View All Roles',
+        'View All Departments',
+        'View All Employees By Department',
+        'View Department Budgets',
+        'Update Employee Role',
+        'Update Employee Manager',
+        'Add Employee',
+        'Add Role',
+        'Add Department',
+        'Remove Employee',
+        'Remove Role',
+        'Remove Department',
+        'Exit'
+      ]
+    }])
+    .then((answers) => {
+      const {
+        choices
+      } = answers;
+
+      // if (choices === 'View All Employees') {
+      //   viewAllEmployees();
+      // }
+
+      if (choices === 'View All Departments') {
+        showDepartments();
+      }
+
+      // if (choices === 'View All Employees By Department') {
+      //   viewEmployeesByDepartment();
+      // }
+
+      // if (choices === 'Add Employee') {
+      //   addEmployee();
+      // }
+
+      // if (choices === 'Remove Employee') {
+      //   removeEmployee();
+      // }
+
+      // if (choices === 'Update Employee Role') {
+      //   updateEmployeeRole();
+      // }
+
+      // if (choices === 'Update Employee Manager') {
+      //   updateEmployeeManager();
+      // }
+
+      // if (choices === 'View All Roles') {
+      //   viewAllRoles();
+      // }
+
+      // if (choices === 'Add Role') {
+      //   addRole();
+      // }
+
+      // if (choices === 'Remove Role') {
+      //   removeRole();
+      // }
+
+      if (choices === 'Add Department') {
+        addDepartment();
+      }
+
+      if (choices === 'Remove Department') {
+       deleteDepartment();
+      }
+
+      if (choices === 'Exit') {
+        connection.end();
+      }
+    });
+};
+module.exports = {promptUser}

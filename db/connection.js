@@ -7,6 +7,9 @@ const db = mysql.createConnection({
   // Your MySQL password
   password: 'DLP82418!s',
   database: 'db_employee_tracker'
-});
+  },
+  console.log(`Connected to the inventory_db database.`)
+  );
+
 
 module.exports = db;
