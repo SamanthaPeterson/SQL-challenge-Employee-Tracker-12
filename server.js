@@ -13,6 +13,18 @@ const {
   showDepartments
 } = require('./Modles/models/department')
 
+const {
+  deleteEmployee, 
+  updateEmployee, 
+  addEmployee, 
+  updateManager
+} = require('./Modles/models/employee')
+
+const {
+  deleteRole,
+  addRole,
+  showRoles
+} = require('./Modles/models/employee')
 
 connection.connect((error) => {
   if (error) throw error;                                                     
@@ -33,14 +45,15 @@ const promptUser = () => {
         'View All Departments',
         'View All Employees By Department',
         'View Department Budgets',
-        'Update Employee Role',
-        'Update Employee Manager',
+        'Update Employee',
+        'Update Manager',
         'Add Employee',
         'Add Role',
         'Add Department',
         'Remove Employee',
-        'Remove Role',
+        'Delete Role',
         'Remove Department',
+        'showRoles',
         'Exit'
       ]
     }])
@@ -61,32 +74,32 @@ const promptUser = () => {
       //   viewEmployeesByDepartment();
       // }
 
-      // if (choices === 'Add Employee') {
-      //   addEmployee();
+      if (choices === 'Add Employee') {
+        addEmployee();
+      }
+
+      if (choices === 'Remove Employee') {
+        removeEmployee();
+      }
+
+      if (choices === 'Update Employee') {
+        updateEmployee();
+      }
+
+      if (choices === 'Update Manager') {
+        updateManager();
+      }
+
+      // if (choices === 'Show Roles') {
+      //   showRoles();
       // }
 
-      // if (choices === 'Remove Employee') {
-      //   removeEmployee();
-      // }
+      if (choices === 'Add Role') {
+        addRole();
+      }
 
-      // if (choices === 'Update Employee Role') {
-      //   updateEmployeeRole();
-      // }
-
-      // if (choices === 'Update Employee Manager') {
-      //   updateEmployeeManager();
-      // }
-
-      // if (choices === 'View All Roles') {
-      //   viewAllRoles();
-      // }
-
-      // if (choices === 'Add Role') {
-      //   addRole();
-      // }
-
-      // if (choices === 'Remove Role') {
-      //   removeRole();
+      // if (choices === 'Delete Role') {
+      //   deleteRole();
       // }
 
       if (choices === 'Add Department') {

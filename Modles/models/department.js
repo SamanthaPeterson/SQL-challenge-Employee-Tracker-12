@@ -2,7 +2,7 @@
 //const db = require('../../db/connection');
 const connection = require('../../db/connection');
 require('console.table') 
-const
+
 // function to show all departments 
 showDepartments = () => {
   console.log('Showing all departments...\n');
@@ -16,7 +16,6 @@ showDepartments = () => {
   connection.promise().query(sql).then(([rows])  => {
     console.table(rows);
   })
-
 };
 
 

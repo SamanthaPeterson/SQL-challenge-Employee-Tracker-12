@@ -1,8 +1,8 @@
-const db = require('../../db/connection');
-const connection = require('./config/connection');
+//const db = require('../../db/connection');
+const connection = require('../../db/connection');
+require('console.table') 
 
-
-const inputCheck = require('../../utils/inputCheck');
+//const inputCheck = require('../../utils/inputCheck');
 
 // function to show all employees 
 showEmployees = () => {
@@ -19,11 +19,10 @@ showEmployees = () => {
                       LEFT JOIN department ON role.department_id = department.id
                       LEFT JOIN employee manager ON employee.manager_id = manager.id`;
 
-  connection.promise().query(sql, (err, rows) => {
-    if (err) throw err;
+  connection.promise().query(sql).then(([rows])  => {
     console.table(rows);
-    promptUser();
-  });
+  })
+
 };
 
 // function to add an employee 
@@ -57,6 +56,8 @@ addEmployee = () => {
       ])
       .then(answer => {
           const params = [answer.fistName, answer.lastName]
+      })
+    }
 
 // function to update an employee 
 updateEmployee = () => {
@@ -128,7 +129,7 @@ updateEmployee = () => {
           });
         });
     });
-
+  }
 
 // function to delete employees
 deleteEmployee = () => {
@@ -174,70 +175,11 @@ updateManager = () => {
   // get employees from employee table 
   const employeeSql = `SELECT * FROM employee`;
 
-  connection.promise().query(employeeSql, (err, data) => {
-    if (err) throw err;
-
-    const employees = data.map(({
-      id,
-      first_name,
-      last_name
-    }) => ({
-      name: first_name + " " + last_name,
-      value: id
-    }));
-
-    inquirer.prompt([{
-        type: 'list',
-        name: 'name',
-        message: "Which employee would you like to update?",
-        choices: employees
-      }])
-      .then(empChoice => {
-        const employee = empChoice.name;
-        const params = [];
-        params.push(employee);
-
-        const managerSql = `SELECT * FROM employee`;
-
-        connection.promise().query(managerSql, (err, data) => {
-          if (err) throw err;
-
-          const managers = data.map(({
-            id,
-            first_name,
-            last_name
-          }) => ({
-            name: first_name + " " + last_name,
-            value: id
-          }));
-
-          inquirer.prompt([{
-              type: 'list',
-              name: 'manager',
-              message: "Who is the employee's manager?",
-              choices: managers
-            }])
-            .then(managerChoice => {
-              const manager = managerChoice.manager;
-              params.push(manager);
-
-              let employee = params[0]
-              params[0] = manager
-              params[1] = employee
-
-
-              // console.log(params)
-
-              const sql = `UPDATE employee SET manager_id = ? WHERE id = ?`;
-
-              connection.query(sql, params, (err, result) => {
-                if (err) throw err;
-                console.log("Employee has been updated!");
-
-                showEmployees();
-              });
-            });
-        });
-      });
-  });
+    connection.promise().query(sql).then(([rows])  => {
+    console.table(rows);
+  })
 };
+
+module.exports = {
+  deleteEmployee, updateEmployee, addEmployee, updateManager
+}

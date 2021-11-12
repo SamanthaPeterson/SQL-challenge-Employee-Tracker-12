@@ -1,20 +1,18 @@
-const db = require('../../db/connection');
-const connection = require('./config/connection');
-
-const inputCheck = require('../../utils/inputCheck');
+//const db = require('../../db/connection');
+const connection = require('../../db/connection');
+require('console.table') 
+//const inputCheck = require('../../utils/inputCheck');
 
 // function to show all roles 
 showRoles = () => {
   console.log('Showing all roles...\n');
 
   const sql = `SELECT role.id, role.title, department.name AS department
-               FROM role
-               INNER JOIN department ON role.department_id = department.id`;
+              FROM role
+              INNER JOIN department ON role.department_id = department.id`;
 
-  connection.promise().query(sql, (err, rows) => {
-    if (err) throw err;
+  connection.promise().query(sql).then(([rows])  => {
     console.table(rows);
-    promptUser();
   })
 };
 
@@ -151,8 +149,6 @@ inquirer.prompt([{
     });
   });
 });
-});
-};
 
 
 // function to delete role
@@ -189,3 +185,6 @@ deleteRole = () => {
       });
   });
 };
+module.exports = {
+  deleteRole, addRole, showRoles, roleSql
+}
