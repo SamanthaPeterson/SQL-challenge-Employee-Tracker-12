@@ -21,9 +21,9 @@ const {
 } = require('./Modles/models/employee')
 
 const {
-  deleteRole,
-  addRole,
-  showRoles
+  deleteJob_title,
+  addJob_title,
+  showJob_titles
 } = require('./Modles/models/employee')
 
 connection.connect((error) => {
@@ -41,19 +41,19 @@ const promptUser = () => {
       message: 'Please select an option:',
       choices: [
         'View All Employees',
-        'View All Roles',
+        'View All Job_titles',
         'View All Departments',
         'View All Employees By Department',
         'View Department Budgets',
         'Update Employee',
         'Update Manager',
         'Add Employee',
-        'Add Role',
+        'Add Job_title',
         'Add Department',
         'Remove Employee',
-        'Delete Role',
+        'Delete Job_title',
         'Remove Department',
-        'showRoles',
+        'showJob_titles',
         'Exit'
       ]
     }])
@@ -90,16 +90,16 @@ const promptUser = () => {
         updateManager();
       }
 
-      // if (choices === 'Show Roles') {
-      //   showRoles();
+      // if (choices === 'Show Job_titles') {
+      //   showJob_titles();
       // }
 
-      if (choices === 'Add Role') {
-        addRole();
+      if (choices === 'Add Job_title') {
+        addJob_title();
       }
 
-      // if (choices === 'Delete Role') {
-      //   deleteRole();
+      // if (choices === 'Delete Job_title') {
+      //   deleteJob_title();
       // }
 
       if (choices === 'Add Department') {

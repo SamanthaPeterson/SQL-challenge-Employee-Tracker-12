@@ -10,13 +10,13 @@ showEmployees = () => {
   const sql = `SELECT employee.id, 
                       employee.first_name, 
                       employee.last_name, 
-                      role.title, 
+                      job_title.title, 
                       department.name AS department,
-                      role.salary, 
+                      job_title.salary, 
                       CONCAT (manager.first_name, " ", manager.last_name) AS manager
                FROM employee
-                      LEFT JOIN role ON employee.role_id = role.id
-                      LEFT JOIN department ON role.department_id = department.id
+                      LEFT JOIN job_title ON employee.job_title_id = job_title.id
+                      LEFT JOIN department ON job_title.department_id = department.id
                       LEFT JOIN employee manager ON employee.manager_id = manager.id`;
 
   connection.promise().query(sql).then(([rows])  => {
@@ -87,12 +87,12 @@ updateEmployee = () => {
           const params = [];
           params.push(employee);
 
-          const roleSql = `SELECT * FROM role`;
+          const job_titleSql = `SELECT * FROM job_title`;
 
-          connection.promise().query(roleSql, (err, data) => {
+          connection.promise().query(job_titleSql, (err, data) => {
             if (err) throw err;
 
-            const roles = data.map(({
+            const job_titles = data.map(({
               id,
               title
             }) => ({
@@ -102,22 +102,22 @@ updateEmployee = () => {
 
             inquirer.prompt([{
                 type: 'list',
-                name: 'role',
-                message: "What is the employee's new role?",
-                choices: roles
+                name: 'job_title',
+                message: "What is the employee's new job_title?",
+                choices: job_titles
               }])
-              .then(roleChoice => {
-                const role = roleChoice.role;
-                params.push(role);
+              .then(job_titleChoice => {
+                const job_title = job_titleChoice.job_title;
+                params.push(job_title);
 
                 let employee = params[0]
-                params[0] = role
+                params[0] = job_title
                 params[1] = employee
 
 
                 // console.log(params)
 
-                const sql = `UPDATE employee SET role_id = ? WHERE id = ?`;
+                const sql = `UPDATE employee SET job_title_id = ? WHERE id = ?`;
 
                 connection.query(sql, params, (err, result) => {
                   if (err) throw err;

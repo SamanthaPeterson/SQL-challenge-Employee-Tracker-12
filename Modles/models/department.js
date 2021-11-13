@@ -54,8 +54,8 @@ employeeDepartment = () => {
                       employee.last_name, 
                       department.name AS department
                FROM employee 
-               LEFT JOIN role ON employee.role_id = role.id 
-               LEFT JOIN department ON role.department_id = department.id`;
+               LEFT JOIN job_title ON employee.job_title_id = job_title.id 
+               LEFT JOIN department ON job_title.department_id = department.id`;
 
   connection.promise().query(sql, (err, rows) => {
     if (err) throw err;
