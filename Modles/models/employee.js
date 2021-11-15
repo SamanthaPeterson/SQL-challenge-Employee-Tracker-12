@@ -1,3 +1,5 @@
+//do i have everything i need for a manager role? 
+
 //const db = require('../../db/connection');
 const connection = require('../../db/connection');
 require('console.table') 
@@ -206,7 +208,7 @@ updateManager = () => {
     //  'show All Employees',-
   // 'View All Employees By Department',
   // 'Update Employee',  --done
-      // 'Update Manager',
+      // 'Update Manager',-
   //   'Add Employee',--done
   // 'Remove Employee', 
 

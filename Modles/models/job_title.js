@@ -192,5 +192,5 @@ deleteJob_title = () => {
 //        'show Job titles',
 
 module.exports = {
-  deleteJob_title, addJob_title, showJob_titles, job_titleSql
+  deleteJob_title, addJob_title, showJob_titles
 }
