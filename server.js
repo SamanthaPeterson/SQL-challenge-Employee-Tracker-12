@@ -42,16 +42,16 @@ const promptUser = () => {
       message: 'Please select an option:',
       choices: [
         'Show All Employees',
-        'View All Job_titles',
-        'View All Departments',
-        'View All Employees By Department',
+        'Show Job_titles',
+        'Show All Departments',
+        'View Employee By Department',
         'View Department Budgets',
         'Update Employee',
         'Update Manager',
         'Add Employee',
         'Add Job_title',
         'Add Department',
-        'Remove Employee',
+        'Delete Employee',
         'Delete Job_title',
         'Remove Department',
         'show Job titles',
@@ -63,7 +63,7 @@ const promptUser = () => {
         choices
       } = answers;
 
-      if (choices === 'View All Employees') {
+      if (choices === 'Show All Employees') {
         viewAllEmployees();
       }
 
@@ -80,7 +80,7 @@ const promptUser = () => {
       }
 
       if (choices === 'Remove Employee') {
-        removeEmployee();
+        deleteEmployee();
       }
 
       if (choices === 'Update Employee') {
