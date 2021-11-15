@@ -129,12 +129,11 @@ removeDepartment = () => {
 
 //  'View All Departments',--Done
   // 'View All Employees By Department',--done
-  // 'View Department Budgets',
       //      'Add Department', --done
       // 'Remove Department', -- done
 
 
   module.exports = {
-  showAllDepartments, deleteDepartment, employeeDepartment, 
+  showAllDepartments, removeDepartment, 
   addDepartment, viewEmployeeByDepartment
 }
