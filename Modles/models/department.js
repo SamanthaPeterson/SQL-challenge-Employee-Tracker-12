@@ -48,7 +48,7 @@ addDepartment = () => {
 
 
 // function to view employee by department
-employeeDepartment = () => {
+viewEmployeeByDepartment = () => {
   console.log('Showing employee by departments...\n');
   const sql = `SELECT employee.first_name, 
                       employee.last_name, 
@@ -65,31 +65,31 @@ employeeDepartment = () => {
 };
 
 //view employee by department
-viewEmployeeByDepartment = () => {
-  console.log("Viewing employees by department\n");
+// viewEmployeeByDepartment = () => {
+//   console.log("Viewing employees by department\n");
 
-  var query =
-    `SELECT d.id, d.name, r.salary AS budget
-  FROM employee e
-  LEFT JOIN role r
-	ON e.role_id = r.id
-  LEFT JOIN department d
-  ON d.id = r.department_id
-  GROUP BY d.id, d.name`
+//   var query =
+//     `SELECT d.id, d.name, r.salary AS budget
+//   FROM employee e
+//   LEFT JOIN role r
+// 	ON e.role_id = r.id
+//   LEFT JOIN department d
+//   ON d.id = r.department_id
+//   GROUP BY d.id, d.name`
 
-  connection.query(query, function (err, res) {
-    if (err) throw err;
+//   connection.query(query, function (err, res) {
+//     if (err) throw err;
 
-    const departmentChoices = res.map(data => ({
-      value: data.id, name: data.name
-    }));
+//     const departmentChoices = res.map(data => ({
+//       value: data.id, name: data.name
+//     }));
 
-    console.table(res);
-    console.log("Department view succeed!\n");
+//     console.table(res);
+//     console.log("Department view succeed!\n");
 
-    promptDepartment(departmentChoices);
-  });
-}
+//     promptDepartment(departmentChoices);
+//   });
+// }
 
 
 // function to delete department
@@ -135,5 +135,6 @@ removeDepartment = () => {
 
 
   module.exports = {
-  showAllDepartments, deleteDepartment, employeeDepartment, addDepartment, showAllDepartments
+  showAllDepartments, deleteDepartment, employeeDepartment, 
+  addDepartment, viewEmployeeByDepartment
 }

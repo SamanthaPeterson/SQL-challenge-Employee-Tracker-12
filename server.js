@@ -8,9 +8,8 @@ const cTable = require('console.table');
 
 const {
   removeDepartment,
-  viewEmployeeByDepartment
+  viewEmployeeByDepartment,
   addDepartment,
-  showDepartments,
   showAllDepartments
 } = require('./Modles/models/department')
 
@@ -109,7 +108,7 @@ const promptUser = () => {
       }
 
       if (choices === 'Remove Department') {
-       removeDepartment();
+      removeDepartment();
       }
 
       if (choices === 'Exit') {
