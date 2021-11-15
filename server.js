@@ -7,24 +7,26 @@ const cTable = require('console.table');
 //const validate = require('./javascript/validate');
 
 const {
-  deleteDepartment,
-  employeeDepartment,
+  removeDepartment,
+  viewEmployeeByDepartment
   addDepartment,
-  showDepartments
+  showDepartments,
+  showAllDepartments
 } = require('./Modles/models/department')
 
 const {
   deleteEmployee, 
   updateEmployee, 
   addEmployee, 
-  updateManager
+  updateManager,
+  showAllEmployees
 } = require('./Modles/models/employee')
 
 const {
   deleteJob_title,
   addJob_title,
   showJob_titles
-} = require('./Modles/models/employee')
+} = require('./Modles/models/job_title')
 
 connection.connect((error) => {
   if (error) throw error;                                                     
@@ -40,7 +42,7 @@ const promptUser = () => {
       type: 'list',
       message: 'Please select an option:',
       choices: [
-        'View All Employees',
+        'Show All Employees',
         'View All Job_titles',
         'View All Departments',
         'View All Employees By Department',
@@ -53,7 +55,7 @@ const promptUser = () => {
         'Remove Employee',
         'Delete Job_title',
         'Remove Department',
-        'showJob_titles',
+        'show Job titles',
         'Exit'
       ]
     }])
@@ -62,17 +64,17 @@ const promptUser = () => {
         choices
       } = answers;
 
-      // if (choices === 'View All Employees') {
-      //   viewAllEmployees();
-      // }
+      if (choices === 'View All Employees') {
+        viewAllEmployees();
+      }
 
-      if (choices === 'View All Departments') {
+      if (choices === 'Show All Departments') {
         showDepartments();
       }
 
-      // if (choices === 'View All Employees By Department') {
-      //   viewEmployeesByDepartment();
-      // }
+      if (choices === 'View All Employees By Department') {
+        viewEmployeesByDepartment();
+      }
 
       if (choices === 'Add Employee') {
         addEmployee();
@@ -90,24 +92,24 @@ const promptUser = () => {
         updateManager();
       }
 
-      // if (choices === 'Show Job_titles') {
-      //   showJob_titles();
-      // }
+      if (choices === 'Show Job_titles') {
+        showJob_titles();
+      }
 
       if (choices === 'Add Job_title') {
         addJob_title();
       }
 
-      // if (choices === 'Delete Job_title') {
-      //   deleteJob_title();
-      // }
+      if (choices === 'Delete Job_title') {
+        deleteJob_title();
+      }
 
       if (choices === 'Add Department') {
         addDepartment();
       }
 
       if (choices === 'Remove Department') {
-       deleteDepartment();
+       removeDepartment();
       }
 
       if (choices === 'Exit') {

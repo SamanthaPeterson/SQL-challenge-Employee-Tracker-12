@@ -5,7 +5,7 @@ require('console.table')
 //const inputCheck = require('../../utils/inputCheck');
 
 // function to show all employees 
-showEmployees = () => {
+showAllEmployees = () => {
   console.log('Showing all employees...\n');
   const sql = `SELECT employee.id, 
                       employee.first_name, 
@@ -14,7 +14,7 @@ showEmployees = () => {
                       department.name AS department,
                       job_title.salary, 
                       CONCAT (manager.first_name, " ", manager.last_name) AS manager
-               FROM employee
+                      FROM employee
                       LEFT JOIN job_title ON employee.job_title_id = job_title.id
                       LEFT JOIN department ON job_title.department_id = department.id
                       LEFT JOIN employee manager ON employee.manager_id = manager.id`;
@@ -180,6 +180,37 @@ updateManager = () => {
   })
 };
 
-module.exports = {
-  deleteEmployee, updateEmployee, addEmployee, updateManager
+
+      inquirer.prompt([{
+          type: 'list',
+          name: 'manager',
+          message: "Who is the employee's manager?",
+          choices: managers
+        }])
+        .then(managerChoice => {
+          const manager = managerChoice.manager;
+          params.push(manager);
+
+          const sql = `INSERT INTO employee (first_name, last_name, job_title_id, manager_id)
+                    VALUES (?, ?, ?, ?)`;
+
+          connection.query(sql, params, (err, result) => {
+            if (err) throw err;
+            console.log("Employee has been added!")
+
+            showEmployees();
+          });
+        });
+
+
+    //  'show All Employees',-
+  // 'View All Employees By Department',
+  // 'Update Employee',  --done
+      // 'Update Manager',
+  //   'Add Employee',--done
+  // 'Remove Employee', 
+
+
+      module.exports = {
+  deleteEmployee, updateEmployee, addEmployee, updateManager, showAllEmployees
 }

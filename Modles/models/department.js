@@ -4,7 +4,7 @@ const connection = require('../../db/connection');
 require('console.table') 
 
 // function to show all departments 
-showDepartments = () => {
+showAllDepartments = () => {
   console.log('Showing all departments...\n');
   const sql = `SELECT department.id AS id, department.name AS department FROM department`;
 
@@ -53,9 +53,9 @@ employeeDepartment = () => {
   const sql = `SELECT employee.first_name, 
                       employee.last_name, 
                       department.name AS department
-               FROM employee 
-               LEFT JOIN job_title ON employee.job_title_id = job_title.id 
-               LEFT JOIN department ON job_title.department_id = department.id`;
+              FROM employee 
+              LEFT JOIN job_title ON employee.job_title_id = job_title.id 
+            LEFT JOIN department ON job_title.department_id = department.id`;
 
   connection.promise().query(sql, (err, rows) => {
     if (err) throw err;
@@ -64,8 +64,36 @@ employeeDepartment = () => {
   });
 };
 
+//view employee by department
+viewEmployeeByDepartment = () => {
+  console.log("Viewing employees by department\n");
+
+  var query =
+    `SELECT d.id, d.name, r.salary AS budget
+  FROM employee e
+  LEFT JOIN role r
+	ON e.role_id = r.id
+  LEFT JOIN department d
+  ON d.id = r.department_id
+  GROUP BY d.id, d.name`
+
+  connection.query(query, function (err, res) {
+    if (err) throw err;
+
+    const departmentChoices = res.map(data => ({
+      value: data.id, name: data.name
+    }));
+
+    console.table(res);
+    console.log("Department view succeed!\n");
+
+    promptDepartment(departmentChoices);
+  });
+}
+
+
 // function to delete department
-deleteDepartment = () => {
+removeDepartment = () => {
   const deptSql = `SELECT * FROM department`;
 
   connection.promise().query(deptSql, (err, data) => {
@@ -99,7 +127,13 @@ deleteDepartment = () => {
   });
 };
 
+//  'View All Departments',--Done
+  // 'View All Employees By Department',--done
+  // 'View Department Budgets',
+      //      'Add Department', --done
+      // 'Remove Department', -- done
 
-module.exports = {
-  deleteDepartment, employeeDepartment, addDepartment, showDepartments
+
+  module.exports = {
+  showAllDepartments, deleteDepartment, employeeDepartment, addDepartment, showAllDepartments
 }

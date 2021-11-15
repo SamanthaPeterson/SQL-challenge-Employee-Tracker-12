@@ -185,6 +185,12 @@ deleteJob_title = () => {
       });
   });
 };
+
+  //  'View All Job_titles',
+//    'Add Job_title', -- done
+//  'Delete Job_title',
+//        'show Job titles',
+
 module.exports = {
   deleteJob_title, addJob_title, showJob_titles, job_titleSql
 }
