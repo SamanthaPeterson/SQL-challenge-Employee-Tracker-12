@@ -12,4 +12,4 @@ const db = mysql.createConnection({
   );
 
 
-module.exports = db;
+constructor.exports = db;

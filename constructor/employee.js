@@ -182,29 +182,6 @@ updateManager = () => {
   })
 };
 
-
-      inquirer.prompt([{
-          type: 'list',
-          name: 'manager',
-          message: "Who is the employee's manager?",
-          choices: managers
-        }])
-        .then(managerChoice => {
-          const manager = managerChoice.manager;
-          params.push(manager);
-
-          const sql = `INSERT INTO employee (first_name, last_name, job_title_id, manager_id)
-                    VALUES (?, ?, ?, ?)`;
-
-          connection.query(sql, params, (err, result) => {
-            if (err) throw err;
-            console.log("Employee has been added!")
-
-            showEmployees();
-          });
-        });
-
-
     //  'show All Employees',-
   // 'View All Employees By Department',
   // 'Update Employee',  --done
@@ -213,6 +190,6 @@ updateManager = () => {
   // 'Remove Employee', 
 
 
-      module.exports = {
+      constructor.exports = {
   deleteEmployee, updateEmployee, addEmployee, updateManager, showAllEmployees
 }

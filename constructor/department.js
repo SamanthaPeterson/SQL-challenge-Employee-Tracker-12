@@ -133,7 +133,7 @@ removeDepartment = () => {
       // 'Remove Department', -- done
 
 
-  module.exports = {
+  constructor.exports = {
   showAllDepartments, removeDepartment, 
   addDepartment, viewEmployeeByDepartment
 }

@@ -11,7 +11,7 @@ const {
   viewEmployeeByDepartment,
   addDepartment,
   showAllDepartments
-} = require('./Modles/models/department')
+} = require('./constructor/department')
 
 const {
   deleteEmployee, 
@@ -19,13 +19,13 @@ const {
   addEmployee, 
   updateManager,
   showAllEmployees
-} = require('./Modles/models/employee')
+} = require('./constructor/employee')
 
 const {
   deleteJob_title,
   addJob_title,
   showJob_titles
-} = require('./Modles/models/job_title')
+} = require('./constructor/job_title')
 
 connection.connect((error) => {
   if (error) throw error;                                                     
@@ -64,11 +64,13 @@ const promptUser = () => {
       } = answers;
 
       if (choices === 'Show All Employees') {
-        viewAllEmployees();
+        showAllEmployees();
       }
+    
 
       if (choices === 'Show All Departments') {
-        showDepartments();
+        showAllDepartments();
+        promptUser();
       }
 
       if (choices === 'View All Employees By Department') {
@@ -116,4 +118,4 @@ const promptUser = () => {
       }
     });
 };
-module.exports = {promptUser}
+constructor.exports = {promptUser}
