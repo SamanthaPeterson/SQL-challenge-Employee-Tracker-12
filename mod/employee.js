@@ -190,6 +190,6 @@ updateManager = () => {
   // 'Remove Employee', 
 
 
-      constructor.exports = {
+      mod.exports = {
   deleteEmployee, updateEmployee, addEmployee, updateManager, showAllEmployees
 }

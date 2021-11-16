@@ -1,6 +1,6 @@
 
 //const db = require('../../db/connection');
-const connection = require('../../db/connection');
+const connection = require('../../db/connection.js');
 require('console.table') 
 
 // function to show all departments 
@@ -133,7 +133,7 @@ removeDepartment = () => {
       // 'Remove Department', -- done
 
 
-  constructor.exports = {
+  mod.exports = {
   showAllDepartments, removeDepartment, 
   addDepartment, viewEmployeeByDepartment
 }

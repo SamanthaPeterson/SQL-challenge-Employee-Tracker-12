@@ -191,6 +191,6 @@ deleteJob_title = () => {
 //  'Delete Job_title',
 //        'show Job titles',
 
-constructor.exports = {
+mod.exports = {
   deleteJob_title, addJob_title, showJob_titles
 }

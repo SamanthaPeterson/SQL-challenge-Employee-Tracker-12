@@ -11,7 +11,7 @@ const {
   viewEmployeeByDepartment,
   addDepartment,
   showAllDepartments
-} = require('./constructor/department')
+} = require('./mod/department')
 
 const {
   deleteEmployee, 
@@ -19,13 +19,13 @@ const {
   addEmployee, 
   updateManager,
   showAllEmployees
-} = require('./constructor/employee')
+} = require('./mod/employee')
 
 const {
   deleteJob_title,
   addJob_title,
   showJob_titles
-} = require('./constructor/job_title')
+} = require('./mod/job_title')
 
 connection.connect((error) => {
   if (error) throw error;                                                     
@@ -65,6 +65,7 @@ const promptUser = () => {
 
       if (choices === 'Show All Employees') {
         showAllEmployees();
+        promptUser();
       }
     
 
@@ -75,42 +76,52 @@ const promptUser = () => {
 
       if (choices === 'View All Employees By Department') {
         viewEmployeesByDepartment();
+        promptUser();
       }
 
       if (choices === 'Add Employee') {
         addEmployee();
+        promptUser();
       }
 
       if (choices === 'Remove Employee') {
         deleteEmployee();
+        promptUser();
       }
 
       if (choices === 'Update Employee') {
         updateEmployee();
+        promptUser();
       }
 
       if (choices === 'Update Manager') {
         updateManager();
+        promptUser();
       }
 
       if (choices === 'Show Job_titles') {
         showJob_titles();
+        promptUser();
       }
 
       if (choices === 'Add Job_title') {
         addJob_title();
+        promptUser();
       }
 
       if (choices === 'Delete Job_title') {
         deleteJob_title();
+        promptUser();
       }
 
       if (choices === 'Add Department') {
         addDepartment();
+        promptUser();
       }
 
       if (choices === 'Remove Department') {
       removeDepartment();
+      promptUser();
       }
 
       if (choices === 'Exit') {
@@ -118,4 +129,4 @@ const promptUser = () => {
       }
     });
 };
-constructor.exports = {promptUser}
+mod.exports = {promptUser}
