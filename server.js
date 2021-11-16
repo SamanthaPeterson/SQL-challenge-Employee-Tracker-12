@@ -129,4 +129,4 @@ const promptUser = () => {
       }
     });
 };
-mod.exports = {promptUser}
+module.exports = {promptUser}

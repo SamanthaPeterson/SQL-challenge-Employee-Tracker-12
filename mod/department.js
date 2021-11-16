@@ -1,10 +1,11 @@
 
 //const db = require('../../db/connection');
-const connection = require('../../db/connection.js');
+const connection = require('../db/connection');
+const inquirer = require('inquirer');
 require('console.table') 
 
 // function to show all departments 
-showAllDepartments = () => {
+const showAllDepartments = () => {
   console.log('Showing all departments...\n');
   const sql = `SELECT department.id AS id, department.name AS department FROM department`;
 
@@ -20,7 +21,7 @@ showAllDepartments = () => {
 
 
 // function to add a department 
-addDepartment = () => {
+const addDepartment = () => {
   inquirer.prompt([{
       type: 'input',
       name: 'addDept',
@@ -48,7 +49,7 @@ addDepartment = () => {
 
 
 // function to view employee by department
-viewEmployeeByDepartment = () => {
+const viewEmployeeByDepartment = () => {
   console.log('Showing employee by departments...\n');
   const sql = `SELECT employee.first_name, 
                       employee.last_name, 
@@ -93,7 +94,7 @@ viewEmployeeByDepartment = () => {
 
 
 // function to delete department
-removeDepartment = () => {
+const removeDepartment = () => {
   const deptSql = `SELECT * FROM department`;
 
   connection.promise().query(deptSql, (err, data) => {
@@ -133,7 +134,7 @@ removeDepartment = () => {
       // 'Remove Department', -- done
 
 
-  mod.exports = {
+  module.exports = {
   showAllDepartments, removeDepartment, 
   addDepartment, viewEmployeeByDepartment
 }

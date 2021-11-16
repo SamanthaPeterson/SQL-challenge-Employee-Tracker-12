@@ -1,13 +1,14 @@
 //do i have everything i need for a manager role? 
 
 //const db = require('../../db/connection');
-const connection = require('../../db/connection');
+const connection = require('../db/connection');
+const inquirer = require('inquirer');
 require('console.table') 
 
 //const inputCheck = require('../../utils/inputCheck');
 
 // function to show all employees 
-showAllEmployees = () => {
+const showAllEmployees = () => {
   console.log('Showing all employees...\n');
   const sql = `SELECT employee.id, 
                       employee.first_name, 
@@ -28,7 +29,7 @@ showAllEmployees = () => {
 };
 
 // function to add an employee 
-addEmployee = () => {
+const addEmployee = () => {
     inquirer.prompt([{
           type: 'input',
           name: 'fistName',
@@ -62,7 +63,7 @@ addEmployee = () => {
     }
 
 // function to update an employee 
-updateEmployee = () => {
+const updateEmployee = () => {
     // get employees from employee table 
     const employeeSql = `SELECT * FROM employee`;
 
@@ -134,7 +135,7 @@ updateEmployee = () => {
   }
 
 // function to delete employees
-deleteEmployee = () => {
+const deleteEmployee = () => {
   // get employees from employee table 
   const employeeSql = `SELECT * FROM employee`;
 
@@ -173,11 +174,11 @@ deleteEmployee = () => {
 
 
 // function to update an employee 
-updateManager = () => {
+const updateManager = () => {
   // get employees from employee table 
   const employeeSql = `SELECT * FROM employee`;
 
-    connection.promise().query(sql).then(([rows])  => {
+    connection.promise().query(employeeSql).then(([rows])  => {
     console.table(rows);
   })
 };
@@ -190,6 +191,6 @@ updateManager = () => {
   // 'Remove Employee', 
 
 
-      mod.exports = {
+      module.exports = {
   deleteEmployee, updateEmployee, addEmployee, updateManager, showAllEmployees
 }
