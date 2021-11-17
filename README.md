@@ -15,6 +15,8 @@
     
    
 ## Brief Summary 
+  Walkthrough video https://youtu.be/vz2bsYoJIMg
+  
 
 12. SQL Challenge: Employee Tracker
  
@@ -86,6 +88,8 @@ Click this link to view the project
 2. Enter city names in the search bar, and view the current and forecast weather information available
 
 
+  Walkthrough video https://youtu.be/vz2bsYoJIMg
+  
 
 
 
@@ -167,6 +171,9 @@ You need to set up your MySQL database before you can run the code.
 * Git terminal
   * Node
   * MySQL and MySQL Workbench (or the terminal instead of MySQL Workbench)
+
+  Walkthrough video https://youtu.be/vz2bsYoJIMg
+  
 
 
 
