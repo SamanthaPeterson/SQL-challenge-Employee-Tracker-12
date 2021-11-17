@@ -134,7 +134,7 @@ const removeDepartment = () => {
       // 'Remove Department', -- done
 
 
-  module.exports = {
-  showAllDepartments, removeDepartment, 
-  addDepartment, viewEmployeeByDepartment
-}
+//   module.exports = {
+//   showAllDepartments, removeDepartment, 
+//   addDepartment, viewEmployeeByDepartment
+// }

@@ -5,17 +5,17 @@ require('console.table')
 //const inputCheck = require('../../utils/inputCheck');
 
 // function to show all job_titles 
-const showJob_titles = () => {
-  console.log('Showing all job_titles...\n');
+// const showJob_titles = () => {
+//   console.log('Showing all job_titles...\n');
 
-  const sql = `SELECT job_title.id, job_title.title, department.name AS department
-              FROM job_title
-              INNER JOIN department ON job_title.department_id = department.id`;
+//   const sql = `SELECT job_title.id, job_title.title, department.name AS department
+//               FROM job_title
+//               INNER JOIN department ON job_title.department_id = department.id`;
 
-  connection.promise().query(sql).then(([rows]) => {
-    console.table(rows);
-  })
-};
+//   connection.promise().query(sql).then(([rows]) => {
+//     console.table(rows);
+//   })
+// };
 
 // function to add a job_title 
 const addJob_title = () => {
@@ -192,6 +192,6 @@ const deleteJob_title = () => {
 //  'Delete Job_title',
 //        'show Job titles',
 
-module.exports = {
-  deleteJob_title, addJob_title, showJob_titles
-}
+// module.exports = {
+//   deleteJob_title, addJob_title
+// }
