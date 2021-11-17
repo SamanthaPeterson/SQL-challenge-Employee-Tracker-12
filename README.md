@@ -20,8 +20,9 @@
  
 
 ## Screenshot
-<img width=" ">
 
+
+<img width="984" alt="Screen Shot 2021-11-16 at 7 30 56 PM" src="https://user-images.githubusercontent.com/85209802/142106145-9e18bfd7-45bf-4453-b914-f99e5d18a400.png">
 
 
 
